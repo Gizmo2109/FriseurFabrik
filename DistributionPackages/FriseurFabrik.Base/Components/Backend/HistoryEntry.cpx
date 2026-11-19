@@ -1,0 +1,7 @@
+export component HistoryEntry {
+  at: string
+  by: string
+  text: string
+
+  render <li class="ff-history__entry"><span class="ff-muted">{at} · {by}</span><br/>{text}</li>
+}

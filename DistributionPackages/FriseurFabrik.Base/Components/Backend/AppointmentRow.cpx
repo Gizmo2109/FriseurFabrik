@@ -1,0 +1,22 @@
+export component AppointmentRow {
+  href: string
+  created: string
+  site: string
+  name: string
+  phone: string
+  service: string
+  when: string
+  statusLabel: string
+  statusClass: string
+  showSite: boolean
+
+  render <tr>
+    <td><a class="ff-link" href={href}><strong>{name}</strong></a><br/><span class="ff-muted">{phone}</span></td>
+    {showSite ? <td>{site}</td> : null}
+    <td>{service}</td>
+    <td>{when}</td>
+    <td><span class={["ff-badge", statusClass]}>{statusLabel}</span></td>
+    <td class="ff-muted">{created}</td>
+    <td class="ff-actions"><a class="neos-button neos-button-primary" href={href}>Öffnen</a></td>
+  </tr>
+}

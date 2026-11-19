@@ -1,0 +1,16 @@
+from "./ModuleTab.cpx" import { ModuleTab }
+
+// Frame of the appointments module: tabs, filter and the current view
+export component ModuleShell {
+  tabs: list<ModuleTab>
+  tools: slot
+  content: slot
+
+  render <div class="ff-module">
+    <div class="ff-module__bar">
+      <nav class="ff-tabs" aria-label="Ansichten">{tabs}</nav>
+      <div class="ff-module__tools">{tools}</div>
+    </div>
+    {content}
+  </div>
+}

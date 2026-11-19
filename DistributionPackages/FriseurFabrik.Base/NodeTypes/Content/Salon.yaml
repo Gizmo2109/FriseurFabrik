@@ -1,0 +1,244 @@
+##
+# Elements that render salon wide data maintained on the site node (tab "Salon")
+#
+'FriseurFabrik.Base:Content.OpeningHours':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Öffnungszeiten'
+    icon: 'clock'
+    position: 80
+    help:
+      message: 'Die Zeiten werden zentral in der Startseite (Tab "Salon") gepflegt.'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Öffnungszeiten'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.Contact':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Kontakt & Anfahrt'
+    icon: 'map-marker'
+    position: 85
+    help:
+      message: 'Adresse, Telefon und Öffnungszeiten kommen aus der Startseite (Tab "Salon").'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. So finden Sie uns'
+            autoparagraph: false
+            formatting: {}
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Zusatztext (optional)'
+            autoparagraph: true
+            formatting:
+              strong: true
+              em: true
+              a: true
+
+'FriseurFabrik.Base:Content.AppointmentForm':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Terminanfrage-Formular'
+    icon: 'calendar-check'
+    position: 90
+    help:
+      message: 'Leistungen und Stylist:innen im Formular werden automatisch aus Preisliste und Team der Website übernommen.'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Termin anfragen'
+            autoparagraph: false
+            formatting: {}
+    intro:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Einleitung, z.B. Wir melden uns innerhalb eines Werktags.'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+    successText:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Text nach dem Absenden'
+            autoparagraph: false
+            formatting:
+              strong: true
+
+'FriseurFabrik.Base:Content.Instagram':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Instagram'
+    icon: 'camera'
+    position: 65
+    help:
+      message: 'Zeigt die neuesten Beiträge, wenn in der Startseite ein Instagram-Token hinterlegt ist. Sonst die hier gewählten Bilder.'
+    inspector:
+      groups:
+        instagram:
+          label: 'Instagram'
+          icon: 'camera'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Folgt uns auf Instagram'
+            autoparagraph: false
+            formatting: {}
+    images:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        label: 'Bilder (ohne Token)'
+        reloadIfChanged: true
+        inspector:
+          group: instagram
+          editorOptions:
+            constraints:
+              mediaTypes: ['image/*']
+    limit:
+      type: integer
+      defaultValue: 8
+      ui:
+        label: 'Anzahl Beiträge'
+        reloadIfChanged: true
+        inspector:
+          group: instagram
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              '4':
+                label: '4'
+              '6':
+                label: '6'
+              '8':
+                label: '8'
+              '12':
+                label: '12'
+
+'FriseurFabrik.Base:Content.CallToAction':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Aufruf mit Button'
+    icon: 'bullhorn'
+    position: 75
+    inspector:
+      groups:
+        cta:
+          label: 'Button'
+          icon: 'link'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift'
+            autoparagraph: false
+            formatting: {}
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Text (optional)'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+    buttonLabel:
+      type: string
+      ui:
+        label: 'Button-Text'
+        reloadIfChanged: true
+        help:
+          message: 'Leer = Beschriftung des Termin-Buttons.'
+        inspector:
+          group: cta
+    link:
+      type: string
+      ui:
+        label: 'Link'
+        reloadIfChanged: true
+        help:
+          message: 'Leer = Terminseite der Website.'
+        inspector:
+          group: cta
+          editor: 'Neos.Neos/Inspector/Editors/LinkEditor'
+
+'FriseurFabrik.Base:Content.Image':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Bild'
+    icon: 'image'
+    position: 28
+    inspector:
+      groups:
+        image:
+          label: 'Bild'
+          icon: 'image'
+  properties:
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Bild'
+        reloadIfChanged: true
+        inspector:
+          group: image
+    caption:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Bildunterschrift (optional)'
+            autoparagraph: false
+            formatting: {}

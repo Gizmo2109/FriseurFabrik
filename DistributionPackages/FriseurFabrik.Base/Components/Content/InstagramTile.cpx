@@ -1,0 +1,14 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component InstagramTile {
+  src: string
+  alt: string
+  href?: string
+  video: boolean
+
+  render <a class="insta__tile" href={href} target="_blank" rel="noopener">
+    <img src={src} alt={alt} loading="lazy"/>
+    {video ? <span class="insta__badge"><Icon name={IconName.PLAY}/></span> : null}
+  </a>
+}

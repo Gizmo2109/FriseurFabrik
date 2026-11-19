@@ -1,0 +1,45 @@
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'FriseurFabrik.Base':
+          position: 'before Neos.Neos'
+  Neos:
+    sites:
+      '*':
+        uriPathSuffix: ''
+    userInterface:
+      # the salons use the backend in German
+      defaultLanguage: 'de'
+      navigateComponent:
+        structureTree:
+          loadingDepth: 4
+    modules:
+      management:
+        submodules:
+          termine:
+            label: 'Termine'
+            controller: 'FriseurFabrik\Base\Controller\Module\AppointmentsController'
+            description: 'Terminanfragen bestätigen, verschieben oder absagen und Kund:innen kontaktieren.'
+            icon: 'calendar-check'
+            additionalResources:
+              styleSheets:
+                - 'resource://FriseurFabrik.Base/Public/Styles/module.css'
+              javaScripts:
+                - 'resource://FriseurFabrik.Base/Public/Scripts/module.js'
+      administration:
+        submodules:
+          seitenschutz:
+            label: 'Seitenschutz'
+            controller: 'FriseurFabrik\Base\Controller\Module\PageLocksController'
+            description: 'Seiten für Salon-Konten sperren (z.B. Impressum) – dann können nur Administratoren sie bearbeiten.'
+            icon: 'lock'
+            additionalResources:
+              styleSheets:
+                - 'resource://FriseurFabrik.Base/Public/Styles/module.css'
+
+FriseurFabrik:
+  Base:
+    mail:
+      # sender of all appointment e-mails; the salon name is the display name, replies go to the salon
+      fromAddress: 'termine@friseurfabrik.test'

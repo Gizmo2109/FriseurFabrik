@@ -1,0 +1,71 @@
+##
+# Static part of the access rules. The per salon roles (edit rights for one website each) are generated
+# into Policy.Salons.yaml by ./flow salon:policy
+#
+privilegeTargets:
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'FriseurFabrik.Base:AppointmentRequest':
+      label: 'Send appointment requests and answer proposals via the website'
+      matcher: 'method(FriseurFabrik\Base\Controller\AppointmentController->(submit|respond|answer)Action())'
+    'FriseurFabrik.Base:Module.Appointments.Actions':
+      label: 'Manage appointments in the backend module'
+      matcher: 'method(FriseurFabrik\Base\Controller\Module\AppointmentsController->(?!initialize).*Action())'
+    'FriseurFabrik.Base:Module.PageLocks.Actions':
+      label: 'Lock / unlock pages for salon editors'
+      matcher: 'method(FriseurFabrik\Base\Controller\Module\PageLocksController->(?!initialize).*Action())'
+
+  'Neos\Neos\Security\Authorization\Privilege\ModulePrivilege':
+    'FriseurFabrik.Base:Module.Appointments':
+      label: 'Access to the appointments module'
+      matcher: 'management/termine'
+    'FriseurFabrik.Base:Module.PageLocks':
+      label: 'Access to the page lock module'
+      matcher: 'administration/seitenschutz'
+
+  'Neos\Neos\Security\Authorization\Privilege\EditNodePrivilege':
+    # pages tagged "fabrik-locked" (e.g. Impressum) can only be edited by administrators
+    'FriseurFabrik.Base:LockedPages':
+      label: 'Edit locked pages'
+      matcher: 'fabrik-locked'
+
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'FriseurFabrik.Base:AppointmentRequest'
+        permission: GRANT
+
+  # parent of all generated salon roles "FriseurFabrik.Base:Salon_<site>"
+  'FriseurFabrik.Base:SalonEditor':
+    abstract: true
+    label: 'Salon-Redaktion'
+    description: 'Basisrolle für Salon-Konten: Inhalte bearbeiten und Termine verwalten.'
+    parentRoles: ['Neos.Neos:Editor']
+    privileges:
+      -
+        privilegeTarget: 'FriseurFabrik.Base:Module.Appointments'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:Module.Appointments.Actions'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:LockedPages'
+        permission: DENY
+
+  'Neos.Neos:Administrator':
+    privileges:
+      -
+        privilegeTarget: 'FriseurFabrik.Base:Module.Appointments'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:Module.Appointments.Actions'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:Module.PageLocks'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:Module.PageLocks.Actions'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:LockedPages'
+        permission: GRANT

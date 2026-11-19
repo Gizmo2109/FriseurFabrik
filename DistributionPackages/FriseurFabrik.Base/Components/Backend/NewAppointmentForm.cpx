@@ -1,0 +1,40 @@
+from "./Option.cpx" import { Option }
+from "./Csrf.cpx" import { Csrf }
+
+// Appointment agreed by phone or in the salon: entered directly as confirmed appointment
+export component NewAppointmentForm {
+  action: string
+  backHref: string
+  csrf: string
+  sites: list<Option>
+  showSites: boolean
+  date: string
+  durations: list<Option>
+
+  render <div class="ff-detail">
+    <p><a class="ff-link" href={backHref}>← Zurück zur Übersicht</a></p>
+    <h2 class="ff-detail__name">Termin eintragen</h2>
+    <p class="ff-muted">Für Termine, die telefonisch oder im Salon vereinbart wurden. Der Termin wird direkt als bestätigt gespeichert.</p>
+    <form class="ff-panel ff-form ff-form--wide" method="post" action={action}>
+      <Csrf token={csrf}/>
+      {showSites ? <label>Salon<select name="moduleArguments[site]" required>{sites}</select></label> : null}
+      <div class="ff-form__row">
+        <label>Name *<input type="text" name="moduleArguments[name]" required maxlength="120"/></label>
+        <label>Telefon *<input type="tel" name="moduleArguments[phone]" required maxlength="40"/></label>
+        <label>E-Mail<input type="email" name="moduleArguments[email]" maxlength="160"/></label>
+      </div>
+      <div class="ff-form__row">
+        <label>Leistung<input type="text" name="moduleArguments[service]" maxlength="200" placeholder="z.B. Damen: Schnitt & Föhnen"/></label>
+        <label>Stylist:in<input type="text" name="moduleArguments[stylist]" maxlength="120"/></label>
+      </div>
+      <div class="ff-form__row">
+        <label>Datum *<input type="date" name="moduleArguments[date]" value={date} required/></label>
+        <label>Uhrzeit *<input type="time" name="moduleArguments[time]" step="900" required/></label>
+        <label>Dauer<select name="moduleArguments[duration]">{durations}</select></label>
+      </div>
+      <label>Notiz<textarea name="moduleArguments[message]" rows="2"></textarea></label>
+      <label class="ff-check"><input type="checkbox" name="moduleArguments[notify]" value="1" checked/> Bestätigung per E-Mail senden (falls E-Mail angegeben)</label>
+      <button class="neos-button neos-button-success" type="submit">Termin speichern</button>
+    </form>
+  </div>
+}

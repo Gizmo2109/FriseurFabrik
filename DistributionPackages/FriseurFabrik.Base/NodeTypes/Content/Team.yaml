@@ -1,0 +1,99 @@
+'FriseurFabrik.Base:Content.Team':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Team'
+    icon: 'users'
+    position: 50
+  childNodes:
+    members:
+      type: 'FriseurFabrik.Base:Collection.TeamMembers'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Unser Team'
+            autoparagraph: false
+            formatting: {}
+    intro:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Einleitung (optional)'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+
+'FriseurFabrik.Base:Content.TeamMember':
+  label: "${Neos.Node.labelForNode(node).properties('name')}"
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  ui:
+    label: 'Teammitglied'
+    icon: 'user'
+    inspector:
+      groups:
+        member:
+          label: 'Teammitglied'
+          icon: 'user'
+  properties:
+    photo:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Foto'
+        reloadIfChanged: true
+        inspector:
+          group: member
+    name:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Name'
+            autoparagraph: false
+            formatting: {}
+    role:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Rolle, z.B. Friseurmeisterin'
+            autoparagraph: false
+            formatting: {}
+    bio:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kurzvorstellung, Spezialgebiete …'
+            autoparagraph: false
+            formatting:
+              em: true
+    instagramUrl:
+      type: string
+      ui:
+        label: 'Instagram (URL, optional)'
+        reloadIfChanged: true
+        inspector:
+          group: member
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https?:\/\/\S+)?$/'
+    bookable:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Im Terminformular als Wunsch-Stylist wählbar'
+        inspector:
+          group: member

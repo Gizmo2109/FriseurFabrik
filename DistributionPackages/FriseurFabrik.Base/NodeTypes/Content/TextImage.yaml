@@ -1,0 +1,69 @@
+'FriseurFabrik.Base:Content.TextImage':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Text mit Bild'
+    icon: 'columns'
+    position: 25
+    inspector:
+      groups:
+        image:
+          label: 'Bild'
+          icon: 'image'
+  properties:
+    kicker:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überzeile (optional)'
+            autoparagraph: false
+            formatting: {}
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift'
+            autoparagraph: false
+            formatting:
+              em: true
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Text eingeben …'
+            autoparagraph: true
+            formatting:
+              strong: true
+              em: true
+              ul: true
+              a: true
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Bild'
+        reloadIfChanged: true
+        inspector:
+          group: image
+    imagePosition:
+      type: string
+      defaultValue: 'right'
+      ui:
+        label: 'Bildposition'
+        reloadIfChanged: true
+        inspector:
+          group: image
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              left:
+                label: 'Links'
+              right:
+                label: 'Rechts'

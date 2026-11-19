@@ -1,0 +1,83 @@
+'FriseurFabrik.Base:Content.Hero':
+  label: "${Neos.Node.labelForNode(node).properties('headline')}"
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Bühne (Hero)'
+    icon: 'image'
+    position: 10
+    inspector:
+      groups:
+        hero:
+          label: 'Bühne'
+          icon: 'image'
+  properties:
+    kicker:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kleine Überzeile'
+            autoparagraph: false
+            formatting: {}
+    headline:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Große Überschrift'
+            autoparagraph: false
+            formatting:
+              em: true
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kurzer Einleitungstext'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Hintergrundbild'
+        reloadIfChanged: true
+        inspector:
+          group: hero
+    size:
+      type: string
+      defaultValue: 'large'
+      ui:
+        label: 'Höhe'
+        reloadIfChanged: true
+        inspector:
+          group: hero
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              large:
+                label: 'Groß (Startseite)'
+              small:
+                label: 'Kompakt (Unterseite)'
+    showBookingButton:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Termin-Button anzeigen'
+        reloadIfChanged: true
+        inspector:
+          group: hero
+    showPhoneButton:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Anruf-Button anzeigen'
+        reloadIfChanged: true
+        inspector:
+          group: hero

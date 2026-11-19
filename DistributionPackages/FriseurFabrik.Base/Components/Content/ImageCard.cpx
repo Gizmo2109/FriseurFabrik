@@ -1,0 +1,21 @@
+from "../Data/Img.cpx" import { Img }
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component ImageCard {
+  image?: Img
+  title: slot
+  text: slot
+  href?: string
+
+  render <article class="image-card">
+    <div class="image-card__media">
+      {image !== null ? <img src={image?.src ?? ""} srcset={image?.srcset} sizes="(min-width: 900px) 33vw, 100vw" alt={image?.alt ?? ""} width={image?.width} height={image?.height} loading="lazy"/> : <div class="media-placeholder"></div>}
+    </div>
+    <div class="image-card__body">
+      <h3 class="image-card__title">{title}</h3>
+      <p class="image-card__text">{text}</p>
+      {href !== null ? <a class="link-arrow image-card__link" href={href ?? ""}>Mehr erfahren <Icon name={IconName.ARROW}/></a> : null}
+    </div>
+  </article>
+}

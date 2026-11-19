@@ -1,0 +1,13 @@
+from "./Csrf.cpx" import { Csrf }
+
+export component DeclineForm {
+  action: string
+  csrf: string
+
+  render <form class="ff-panel ff-form" method="post" action={action} data-confirm="Anfrage wirklich absagen? Die Kundin / der Kunde wird informiert.">
+    <Csrf token={csrf}/>
+    <h3 class="ff-panel__title">Absagen</h3>
+    <label>Begründung / Nachricht (optional)<textarea name="moduleArguments[message]" rows="2" placeholder="z.B. Leider sind wir in dieser Woche ausgebucht."></textarea></label>
+    <button class="neos-button neos-button-danger" type="submit">Anfrage absagen</button>
+  </form>
+}

@@ -1,0 +1,24 @@
+from "./AppointmentRow.cpx" import { AppointmentRow }
+
+export component AppointmentTable {
+  rows: list<AppointmentRow>
+  showSite: boolean
+  emptyText: string
+
+  render rows.count > 0
+    ? <table class="neos-table ff-table">
+        <thead>
+          <tr>
+            <th>Kund:in</th>
+            {showSite ? <th>Salon</th> : null}
+            <th>Leistung</th>
+            <th>Termin / Wunsch</th>
+            <th>Status</th>
+            <th>Eingang</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    : <p class="ff-empty">{emptyText}</p>
+}

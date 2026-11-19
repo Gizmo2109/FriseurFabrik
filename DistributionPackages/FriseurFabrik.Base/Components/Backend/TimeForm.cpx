@@ -1,0 +1,31 @@
+from "./Option.cpx" import { Option }
+from "./Csrf.cpx" import { Csrf }
+
+// Used for "confirm" and "propose another time"
+export component TimeForm {
+  title: string
+  hint: string
+  action: string
+  csrf: string
+  date: string
+  time: string
+  durations: list<Option>
+  stylists: list<Option>
+  messagePlaceholder: string
+  buttonLabel: string
+  primary: boolean
+
+  render <form class="ff-panel ff-form" method="post" action={action}>
+    <Csrf token={csrf}/>
+    <h3 class="ff-panel__title">{title}</h3>
+    <p class="ff-muted">{hint}</p>
+    <div class="ff-form__row">
+      <label>Datum<input type="date" name="moduleArguments[date]" value={date} required/></label>
+      <label>Uhrzeit<input type="time" name="moduleArguments[time]" value={time} step="900" required/></label>
+      <label>Dauer<select name="moduleArguments[duration]">{durations}</select></label>
+    </div>
+    {stylists.count > 0 ? <label>Stylist:in<select name="moduleArguments[stylist]"><option value="">– egal –</option>{stylists}</select></label> : null}
+    <label>Nachricht an die Kundin / den Kunden (optional)<textarea name="moduleArguments[message]" rows="3" placeholder={messagePlaceholder}></textarea></label>
+    <button class={["neos-button", primary ? "neos-button-success" : "neos-button-primary"]} type="submit">{buttonLabel}</button>
+  </form>
+}

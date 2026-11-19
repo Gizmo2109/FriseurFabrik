@@ -1,0 +1,10 @@
+export component NavItem {
+  label: string
+  href: string
+  active: boolean
+  external: boolean
+
+  render <li class="nav__item">
+    <a class={["nav__link", active ? "is-active" : null]} href={href} aria-current={active ? "page" : null} target={external ? "_blank" : null} rel={external ? "noopener" : null}>{label}</a>
+  </li>
+}

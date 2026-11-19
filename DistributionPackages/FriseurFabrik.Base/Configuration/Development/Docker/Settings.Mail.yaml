@@ -1,0 +1,5 @@
+# all mails of the docker dev environment go to Mailpit (http://localhost:8025)
+Neos:
+  SymfonyMailer:
+    mailer:
+      dsn: 'smtp://mailpit:1025'

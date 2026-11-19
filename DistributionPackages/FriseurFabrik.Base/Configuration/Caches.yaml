@@ -1,0 +1,7 @@
+FriseurFabrik_Base_Instagram:
+  frontend: Neos\Cache\Frontend\VariableFrontend
+  backend: Neos\Cache\Backend\FileBackend
+
+FriseurFabrik_Base_RateLimit:
+  frontend: Neos\Cache\Frontend\VariableFrontend
+  backend: Neos\Cache\Backend\FileBackend

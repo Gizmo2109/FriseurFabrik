@@ -1,0 +1,9 @@
+export component ImageCards {
+  title: slot
+  items: slot
+
+  render <div class="image-cards">
+    <h2 class="section-head__title">{title}</h2>
+    {items}
+  </div>
+}

@@ -1,0 +1,27 @@
+from "./Csrf.cpx" import { Csrf }
+
+export component ContactForm {
+  action: string
+  csrf: string
+  subject: string
+  hasEmail: boolean
+  phoneLabel: string
+  phoneHref: string
+  whatsappHref?: string
+
+  render <div class="ff-panel">
+    <h3 class="ff-panel__title">Kund:in kontaktieren</h3>
+    <p class="ff-contact-buttons">
+      <a class="neos-button" href={phoneHref}>Anrufen: {phoneLabel}</a>
+      {whatsappHref !== null ? <a class="neos-button" href={whatsappHref ?? ""} target="_blank" rel="noopener">WhatsApp</a> : null}
+    </p>
+    {hasEmail
+      ? <form class="ff-form" method="post" action={action}>
+          <Csrf token={csrf}/>
+          <label>Betreff<input type="text" name="moduleArguments[subject]" value={subject} required maxlength="150"/></label>
+          <label>Nachricht<textarea name="moduleArguments[message]" rows="4" required></textarea></label>
+          <button class="neos-button neos-button-primary" type="submit">E-Mail senden</button>
+        </form>
+      : <p class="ff-muted">Keine E-Mail-Adresse angegeben – bitte telefonisch kontaktieren.</p>}
+  </div>
+}

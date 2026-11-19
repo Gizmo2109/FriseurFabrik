@@ -1,0 +1,18 @@
+from "./GalleryItem.cpx" import { GalleryItem }
+
+export component Gallery {
+  title: slot
+  intro: slot
+  items: list<GalleryItem>
+  mosaic: boolean
+
+  render <div class="gallery-block">
+    <header class="section-head">
+      <h2 class="section-head__title">{title}</h2>
+      <div class="section-head__intro">{intro}</div>
+    </header>
+    {items.count > 0
+      ? <div class={["gallery", mosaic ? "gallery--mosaic" : null]}>{items}</div>
+      : <p class="empty-hint">Noch keine Bilder ausgewählt.</p>}
+  </div>
+}

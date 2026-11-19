@@ -1,0 +1,79 @@
+'FriseurFabrik.Base:Content.PriceList':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Preisliste'
+    icon: 'euro-sign'
+    position: 40
+    help:
+      message: 'Eine Kategorie der Preisliste (z.B. Damen, Herren, Farbe). Die Einträge erscheinen auch als Auswahl im Terminformular.'
+  childNodes:
+    items:
+      type: 'FriseurFabrik.Base:Collection.PriceItems'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kategorie, z.B. Damen'
+            autoparagraph: false
+            formatting: {}
+    note:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Hinweis (optional), z.B. Preise abhängig von Haarlänge'
+            autoparagraph: false
+            formatting:
+              em: true
+
+'FriseurFabrik.Base:Content.PriceItem':
+  label: "${Neos.Node.labelForNode(node).properties('name')}"
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  ui:
+    label: 'Preis-Eintrag'
+    icon: 'tag'
+  properties:
+    name:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Leistung'
+            autoparagraph: false
+            formatting: {}
+    description:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Beschreibung (optional)'
+            autoparagraph: false
+            formatting: {}
+    price:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'ab 0 €'
+            autoparagraph: false
+            formatting: {}
+    duration:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Dauer (optional)'
+            autoparagraph: false
+            formatting: {}

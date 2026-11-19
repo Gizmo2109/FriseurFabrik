@@ -1,0 +1,105 @@
+from "../Atom/SelectGroup.cpx" import { SelectGroup }
+from "../Atom/SelectOption.cpx" import { SelectOption }
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+// Posts to the AppointmentController. Success / error feedback works without JS via :target anchors.
+export component AppointmentForm {
+  title: slot
+  intro: slot
+  successText: slot
+  action: string
+  site: string
+  returnUri: string
+  services: list<SelectGroup>
+  stylists: list<SelectOption>
+  minDate: string
+  closedDays: string
+  privacyHref?: string
+  phoneLabel?: string
+  phoneHref?: string
+
+  render <div class="appointment">
+    <div class="appointment__intro">
+      <h2 class="section-head__title">{title}</h2>
+      <div class="prose">{intro}</div>
+      {phoneHref !== null ? <p class="appointment__phone">Lieber persönlich? <a href={phoneHref ?? ""}><Icon name={IconName.PHONE}/>{phoneLabel ?? ""}</a></p> : null}
+    </div>
+    <div class="appointment__form">
+      <div id="termin-gesendet" class="form-notice form-notice--success" role="status"><Icon name={IconName.CHECK}/><div>{successText}</div></div>
+      <div id="termin-fehler" class="form-notice form-notice--error" role="alert">Ihre Anfrage konnte nicht gesendet werden. Bitte prüfen Sie Name, Telefon, den Wunschtermin (nicht an Ruhetagen, nicht in der Vergangenheit) und die Datenschutz-Zustimmung – oder rufen Sie uns an.</div>
+      <form class="form" method="post" action={action} data-appointment-form data-closed-days={closedDays} novalidate>
+        <input type="hidden" name="site" value={site}/>
+        <input type="hidden" name="returnUri" value={returnUri}/>
+        <div class="form__honeypot" aria-hidden="true">
+          <label for="appt-website">Website</label>
+          <input id="appt-website" type="text" name="website" tabindex="-1" autocomplete="off"/>
+        </div>
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="appt-name">Name *</label>
+            <input id="appt-name" type="text" name="name" required maxlength="120" autocomplete="name"/>
+            <p class="field__error" data-error-for="name"></p>
+          </div>
+          <div class="field">
+            <label for="appt-phone">Telefon *</label>
+            <input id="appt-phone" type="tel" name="phone" required maxlength="40" autocomplete="tel"/>
+            <p class="field__error" data-error-for="phone"></p>
+          </div>
+        </div>
+        <div class="field">
+          <label for="appt-email">E-Mail (optional)</label>
+          <input id="appt-email" type="email" name="email" maxlength="160" autocomplete="email"/>
+            <p class="field__error" data-error-for="email"></p>
+        </div>
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="appt-service">Gewünschte Leistung</label>
+            <select id="appt-service" name="service">
+              <option value="">Bitte wählen / Beratung</option>
+              {services}
+            </select>
+          </div>
+          {stylists.count > 0
+            ? <div class="field">
+                <label for="appt-stylist">Wunsch-Stylist:in</label>
+                <select id="appt-stylist" name="stylist">
+                  <option value="">Egal – wer frei ist</option>
+                  {stylists}
+                </select>
+              </div>
+            : null}
+        </div>
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="appt-date">Wunschtermin</label>
+            <input id="appt-date" type="date" name="date" min={minDate}/>
+            <p class="field__error" data-error-for="date"></p>
+          </div>
+          <div class="field">
+            <label for="appt-time">Tageszeit</label>
+            <select id="appt-time" name="time">
+              <option value="">Flexibel</option>
+              <option value="vormittags">Vormittags</option>
+              <option value="mittags">Mittags</option>
+              <option value="nachmittags">Nachmittags</option>
+              <option value="abends">Abends</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="appt-message">Nachricht (optional)</label>
+          <textarea id="appt-message" name="message" rows="4" maxlength="2000" placeholder="z.B. Haarlänge, Farbwunsch, Alternativtermine …"></textarea>
+        </div>
+        <div class="field field--check">
+          <input id="appt-privacy" type="checkbox" name="privacy" value="1" required/>
+          <label for="appt-privacy">Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Terminanfrage gespeichert werden. {privacyHref !== null ? <a href={privacyHref ?? ""}>Datenschutzerklärung</a> : null} *</label>
+        </div>
+        <p class="field__error" data-error-for="privacy"></p>
+        <p class="field__error field__error--form" data-error-for="form"></p>
+        <button class="btn btn--primary btn--large" type="submit" data-submit><Icon name={IconName.CALENDAR}/>Termin anfragen</button>
+        <p class="form__hint">Die Anfrage ist noch keine Terminbestätigung – wir melden uns schnellstmöglich bei Ihnen.</p>
+      </form>
+    </div>
+  </div>
+}

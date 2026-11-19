@@ -1,0 +1,16 @@
+from "./PageLockRow.cpx" import { PageLockRow }
+from "./ModuleTab.cpx" import { ModuleTab }
+
+export component PageLockList {
+  sites: list<ModuleTab>
+  rows: list<PageLockRow>
+
+  render <div class="ff-module">
+    <p class="ff-muted">Gesperrte Seiten (inkl. Unterseiten und Inhalte) können Salon-Konten ansehen, aber nicht bearbeiten. Administratoren können alles bearbeiten.</p>
+    <div class="ff-module__bar"><nav class="ff-tabs" aria-label="Salons">{sites}</nav></div>
+    <table class="neos-table ff-table">
+      <thead><tr><th>Seite</th><th>Zugriff für Salon-Konten</th><th></th></tr></thead>
+      <tbody>{rows}</tbody>
+    </table>
+  </div>
+}

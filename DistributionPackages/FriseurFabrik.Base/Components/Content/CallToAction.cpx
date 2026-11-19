@@ -1,0 +1,14 @@
+export component CallToAction {
+  title: slot
+  text: slot
+  buttonLabel: string
+  buttonHref: string
+
+  render <div class="cta">
+    <div class="cta__body">
+      <h2 class="cta__title">{title}</h2>
+      <p class="cta__text">{text}</p>
+    </div>
+    <a class="btn btn--primary btn--large" href={buttonHref}>{buttonLabel}</a>
+  </div>
+}

@@ -1,0 +1,18 @@
+export component PriceItem {
+  name: slot
+  description: slot
+  price: slot
+  duration: slot
+
+  render <div class="price-item">
+    <div class="price-item__main">
+      <span class="price-item__name">{name}</span>
+      <span class="price-item__dots" aria-hidden="true"></span>
+      <span class="price-item__price">{price}</span>
+    </div>
+    <div class="price-item__meta">
+      <span class="price-item__description">{description}</span>
+      <span class="price-item__duration">{duration}</span>
+    </div>
+  </div>
+}

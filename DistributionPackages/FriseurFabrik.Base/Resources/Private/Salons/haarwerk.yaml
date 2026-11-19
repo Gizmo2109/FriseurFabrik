@@ -1,0 +1,110 @@
+# Haarwerk Würzburg – Altstadt. Alte Website: nicht responsiv (Desktop-Layout auf dem Handy), Preise ohne klare Zuordnung, veraltetes CMS.
+rating:
+  score: 3
+  previousWebsite: 'https://www.haarwerk-wuerzburg.de'
+  reason: 'Kein mobiles Layout, Preisliste mit unklarer Zuordnung von Leistung und Preis, gestalterisch veraltet; positiv: Online-Buchung und Team-Seite'
+nodeName: haarwerk
+domains: ['haarwerk.localhost']
+site:
+  salonName: 'Haarwerk'
+  tagline: 'Wir machen Köpfe.'
+  ownerName: 'Sabine Aksoy'
+  street: 'Textorstraße 13'
+  postalCode: '97070'
+  city: 'Würzburg'
+  district: 'Altstadt'
+  phone: '0931 3538000'
+  email: 'info@haarwerk-wuerzburg.de'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Textorstra%C3%9Fe+13%2C+97070+W%C3%BCrzburg'
+  instagramUrl: 'https://www.instagram.com/haarwerk.wuerzburg'
+  facebookUrl: 'https://www.facebook.com/pages/Haarwerk-Sabine-Aksoy/387126214719580'
+  hoursTuesday: '09:00 – 19:00'
+  hoursWednesday: '09:00 – 19:00'
+  hoursThursday: '09:00 – 19:00'
+  hoursFriday: '09:00 – 19:00'
+  hoursNote: 'Termine nach Vereinbarung. Betriebsferien vom 24.12.2026 bis 11.01.2027.'
+  theme: 'modern'
+  accentColor: '#7d3c5c'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: hairflip
+  about: cutting
+  prices: color-bowl
+  salon: interior-plants
+  story: coloring-wet
+  gallery: [ombre, color-brush, short-platinum, blowdry, curly-glasses, bob, copper, interior-long]
+  instagram: [ombre, short-platinum, curly-glasses, copper, bob, color-brush, platinum, hairflip-city]
+home:
+  kicker: 'Haarwerk Würzburg · Textorstraße'
+  headline: 'Wir machen <em>Köpfe.</em>'
+  text: 'Typgerechte, individuelle und moderne Haarschnitte sind unser Fachgebiet – mit persönlichem Gespräch und viel Freude am Handwerk.'
+  about:
+    kicker: 'Unsere Haltung'
+    title: 'Jeder Mensch hat seine eigene Persönlichkeit'
+    text: '<p>Auf die muss auch beim Haarschnitt individuell eingegangen werden – eine Herausforderung, der wir uns mit großer Freude immer wieder neu stellen.</p><p>Um den typgerechten Haarschnitt zu finden, ist uns das persönliche Gespräch und ein freundschaftlicher Umgang mit unseren Kund:innen ebenso wichtig wie ein harmonisches Arbeitsumfeld.</p>'
+  galleryTitle: 'Schnitt & Farbe'
+  pricesTeaser: 'Schnitte, Balayage, Gloss und Pflege – klar aufgelistet, mit Dauer und Preis.'
+  instagramTitle: 'Folgt uns auf Instagram'
+features:
+  - { icon: scissors, title: 'Typgerechte Schnitte', text: 'Individuell, modern und auf Ihre Persönlichkeit abgestimmt.' }
+  - { icon: color, title: 'Balayage & Farbe', text: 'Von der Ansatzfarbe bis zur kompletten Balayage mit Gloss.' }
+  - { icon: star, title: '20 % für Studierende', text: 'Naomi schneidet allen Studentinnen und Studenten 20 % günstiger.' }
+  - { icon: calendar, title: 'Dienstag bis Freitag bis 19 Uhr', text: 'Auch nach Feierabend ist noch Zeit für einen neuen Look.' }
+prices:
+  headline: 'Leistungen & Preise'
+  intro: 'Haarschnitte inklusive Waschen, Schneiden und Stylen. Pflege wird extra berechnet.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Haarschnitt kurz bis mittel', '56 – 60 €', 'bis Schulterlänge', '45 Min.']
+        - ['Haarschnitt lang', 'ab 70 €', 'ab Schulterlänge', '1 Std.']
+        - ['Styling inkl. Waschen', '35 €', '', '30 Min.']
+        - ['Haarschnitt & Gloss', '80 €']
+        - ['Beratung', '25 €', 'wird bei einem Termin verrechnet', '15 Min.']
+    - title: 'Farbe'
+      items:
+        - ['Reine Ansatzfarbe', '45 €', 'bis 40 g Farbmasse, je weitere 10 g + 10 €']
+        - ['Farbe mit Technik', '115 €', '', '2 Std. 15 Min.']
+        - ['Strähnen kurz bis mittel', '130 €', 'bis Schulter', '2 Std. 45 Min.']
+        - ['Blondierung', '65 €']
+        - ['Balayage komplett', 'ab 250 €', 'mit Gloss, Kur & Styling']
+    - title: 'Pflege & Umformung'
+      items:
+        - ['Olaplex Rebuild Treatment', 'auf Anfrage', 'mit Styling']
+        - ['Haarglättung mit Keratin', 'auf Anfrage', '', '3 Std.']
+        - ['Dauerwelle lang mit Haarschnitt', '85 €']
+    - title: 'Herren & Kinder'
+      items:
+        - ['Herrenhaarschnitt', '39 €']
+        - ['Haare & Bart', '49 €']
+        - ['Herrenschnitt & Farbe', '69 €']
+        - ['Neuhaarschnitt mit Beratung', '55 €']
+        - ['Kinderhaarschnitt bis 12 Jahre', 'ab 25 €']
+  note: '20 % Studentenrabatt auf den Schnitt bei Naomi.'
+  externalLink:
+    title: 'Lieber direkt online buchen?'
+    text: 'Freie Termine finden Sie auch in unserem Online-Kalender bei Planity.'
+    label: 'Zu Planity'
+    url: 'https://www.planity.com/de-DE/haarwerk-97070-wurzburg'
+team:
+  title: 'Unser Team'
+  intro: 'Sechs Menschen, ein Ziel: Ihr typgerechter Look.'
+  members:
+    - { name: 'Sabine', role: 'Friseurmeisterin · Inhaberin', bio: 'Stylistin und Saloninhaberin.' }
+    - { name: 'Maria-Lisa', role: 'Friseurin · Stylistin' }
+    - { name: 'Steffi', role: 'Friseurin · Stylistin' }
+    - { name: 'Naomi', role: 'Friseurin', bio: 'Bietet allen Studentinnen und Studenten 20 % Rabatt auf den Schnitt.' }
+    - { name: 'Chiara', role: 'Auszubildende' }
+    - { name: 'Daniel', role: 'Auszubildender' }
+salonPage:
+  headline: 'Ein harmonisches Arbeitsumfeld – für Sie und uns'
+  intro: 'In der Textorstraße, mitten in der Würzburger Altstadt.'
+  kicker: 'Haarwerk'
+  title: 'Freundschaftlich, persönlich, professionell'
+  text: '<p>Ein harmonisches Arbeitsumfeld ist für uns die Basis für gute Arbeit – und das spüren auch unsere Kund:innen. Bei uns erwartet Sie ein freundschaftlicher Umgang und ein Team, das Ihre Wünsche ernst nimmt.</p>'
+faq:
+  - ['Haben Sie samstags geöffnet?', '<p>Nein, samstags und montags ist der Salon geschlossen. Dienstag bis Freitag sind wir von 9 bis 19 Uhr für Sie da.</p>']
+  - ['Gibt es einen Studentenrabatt?', '<p>Ja – Naomi schneidet allen Studentinnen und Studenten 20 % günstiger.</p>']
+legal:
+  company: 'Haarwerk GmbH'
+  register: 'Amtsgericht Würzburg, HRB 9794 · Geschäftsführende Gesellschafterin: Sabine Aksoy'

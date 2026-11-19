@@ -1,0 +1,28 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+from "../Data/Img.cpx" import { Img }
+
+export component Hero {
+  kicker: slot
+  headline: slot
+  text: slot
+  image?: Img
+  large: boolean
+  bookingLabel?: string
+  bookingHref?: string
+  phoneLabel?: string
+  phoneHref?: string
+
+  render <section class={["hero", large ? "hero--large" : "hero--small", image !== null ? "hero--image" : "hero--plain"]}>
+    {image !== null ? <img class="hero__image" src={image?.src ?? ""} srcset={image?.srcset} sizes="100vw" alt={image?.alt ?? ""} width={image?.width} height={image?.height} fetchpriority="high"/> : null}
+    <div class="container hero__content">
+      <p class="hero__kicker">{kicker}</p>
+      <h1 class="hero__headline">{headline}</h1>
+      <div class="hero__text">{text}</div>
+      <div class="hero__actions">
+        {bookingHref !== null ? <a class="btn btn--primary btn--large" href={bookingHref ?? ""}><Icon name={IconName.CALENDAR}/>{bookingLabel ?? ""}</a> : null}
+        {phoneHref !== null ? <a class="btn btn--light btn--large" href={phoneHref ?? ""}><Icon name={IconName.PHONE}/>{phoneLabel ?? ""}</a> : null}
+      </div>
+    </div>
+  </section>
+}

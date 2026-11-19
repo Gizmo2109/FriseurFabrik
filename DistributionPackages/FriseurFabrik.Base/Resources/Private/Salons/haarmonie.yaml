@@ -1,0 +1,85 @@
+# Haarmonie – Sanderau. Alte Website: kostenloser Homepage-Baukasten (de.tl) mit Fremdwerbung,
+# Cookie-Banner mit 1709 Werbepartnern, kein Impressum vollständig, keine Bilder vom Salon.
+rating:
+  score: 2
+  previousWebsite: 'https://haarmonie-wuerzburg.de.tl'
+  reason: 'Gratis-Baukasten mit Fremdwerbung und 1709 Werbepartnern im Cookie-Banner, ein einziges Stockbild, kein Design, unvollständiges Impressum'
+nodeName: haarmonie
+domains: ['haarmonie.localhost']
+site:
+  salonName: 'Haarmonie'
+  tagline: 'Ihr Friseur in der Sanderau'
+  ownerName: 'Karin Fuchs'
+  street: 'Danziger Straße 8'
+  postalCode: '97072'
+  city: 'Würzburg'
+  district: 'Sanderau'
+  phone: '0931 4606041'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Danziger+Stra%C3%9Fe+8%2C+97072+W%C3%BCrzburg'
+  facebookUrl: 'https://www.facebook.com/haarmoniewuerzburg'
+  hoursTuesday: '09:00 – 18:00'
+  hoursWednesday: 'ab 13:00 nach Vereinbarung'
+  hoursThursday: '09:00 – 18:00'
+  hoursFriday: '09:00 – 18:00'
+  hoursSaturday: '09:00 – 13:00'
+  hoursNote: 'Termine gerne auch nach telefonischer Vereinbarung.'
+  theme: 'pastell'
+  accentColor: '#a2687a'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: braid
+  about: cutting
+  prices: color-bowl
+  salon: interior-long
+  story: blowdry
+  gallery: [updo, interior-plants, coloring-wet, curly, bob, lounge, short-platinum, color-brush]
+home:
+  kicker: 'Friseur in der Sanderau'
+  headline: 'Zeit für Sie – und <em>Ihr Haar</em>'
+  text: 'Persönliche Beratung, ehrliches Handwerk und hochwertige Produkte. Für Damen, Herren und unsere kleinen Kund:innen.'
+  about:
+    kicker: 'Willkommen bei Haarmonie'
+    title: 'Bei uns steht der Mensch im Mittelpunkt'
+    text: '<p>In unserem Salon in bester Lage der Sanderau wird jede Kundin und jeder Kunde persönlich und erstklassig beraten. Um ein perfektes Ergebnis zu erreichen, nehmen wir uns ausreichend Zeit für Sie.</p><p>Ob radikale Typveränderung oder nur eine neue Farbe – mit unserer langjährigen Erfahrung und ausgewählten Qualitätsprodukten sind Sie bei uns genau richtig.</p>'
+  galleryTitle: 'Schnitt, Farbe & Styling'
+  pricesTeaser: 'Vom Kinderhaarschnitt bis zur Hochsteckfrisur – faire Preise, transparent aufgelistet.'
+features:
+  - { icon: heart, title: 'Persönliche Beratung', text: 'Wir nehmen uns Zeit für Ihre Wünsche – vom ersten Gespräch bis zum Styling.' }
+  - { icon: child, title: 'Auch für Kinder', text: 'Auch unsere kleinen Kund:innen sind bei uns herzlich willkommen.' }
+  - { icon: color, title: 'Farbe & Strähnen', text: 'Colorationen, Folien- und Haubensträhnen – typgerecht und schonend.' }
+  - { icon: ring, title: 'Hochsteckfrisuren', text: 'Für Hochzeit, Abiball und jeden besonderen Anlass.' }
+prices:
+  headline: 'Unser Angebot'
+  intro: 'Alle Preise sind Ab-Preise. Der Endpreis ergibt sich aus Material und Arbeitsaufwand – wir beraten Sie gerne vorab.'
+  lists:
+    - title: 'Schnitt & Styling'
+      items:
+        - ['Schneiden', 'ab 24,00 €']
+        - ['Herrenhaarschnitt', 'ab 24,00 €']
+        - ['Kinderhaarschnitt', 'ab 18,50 €']
+        - ['Föhnen / Eindrehen', 'ab 23,00 €']
+        - ['Hochsteckfrisuren', 'ab 36,00 €', 'z.B. für Hochzeit oder Abiball']
+    - title: 'Farbe & Umformung'
+      items:
+        - ['Colorieren', 'ab 38,00 €']
+        - ['Foliensträhnen', 'ab 40,00 €']
+        - ['Haubensträhnen', 'ab 35,00 €']
+        - ['Formwelle / Dauerwelle', 'ab 42,50 €']
+    - title: 'Augen & Brauen'
+      items:
+        - ['Augenbrauen zupfen', 'ab 6,00 €']
+        - ['Augenbrauen färben', '9,00 €']
+        - ['Wimpern färben', '11,00 €']
+  note: 'Der Endpreis ergibt sich aus Material und Arbeitsaufwand.'
+salonPage:
+  headline: 'Ihr Wohlfühlsalon in der Sanderau'
+  intro: 'Ein entspannter Ort, an dem Sie sich ganz auf sich konzentrieren dürfen.'
+  title: 'Höchste Qualität – im Handwerk und bei den Produkten'
+  text: '<p>Wir möchten Ihnen höchste Qualität bieten. Deshalb hat nicht nur unser Handwerk einen hohen Standard, sondern auch alle Produkte, die wir verwenden und anbieten.</p><p>Unser Ziel ist es, Sie glücklich zu machen – denn bei uns steht der Mensch im Mittelpunkt.</p>'
+booking:
+  intro: 'Sagen Sie uns Ihre Wunschleistung und einen Wunschtermin – wir melden uns zur Bestätigung telefonisch bei Ihnen.'
+faq:
+  - ['Haben Sie mittwochs geöffnet?', '<p>Mittwochs sind wir ab 13 Uhr nach telefonischer Vereinbarung für Sie da. Rufen Sie uns einfach an: 0931 4606041.</p>']
+  - ['Schneiden Sie auch Kinderhaare?', '<p>Ja, sehr gerne! Auch kleine Kund:innen werden bei uns bedient – der Kinderhaarschnitt kostet ab 18,50 €.</p>']
+legal:
+  company: 'Haarmonie e.K.'

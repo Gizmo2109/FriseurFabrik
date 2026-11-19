@@ -1,0 +1,15 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component MobileBar {
+  phoneHref?: string
+  whatsappHref?: string
+  ctaLabel: string
+  ctaHref: string
+
+  render <div class="mobile-bar">
+    {phoneHref !== null ? <a class="mobile-bar__item" href={phoneHref ?? ""}><Icon name={IconName.PHONE}/><span>Anrufen</span></a> : null}
+    {whatsappHref !== null ? <a class="mobile-bar__item" href={whatsappHref ?? ""} target="_blank" rel="noopener"><Icon name={IconName.WHATSAPP}/><span>WhatsApp</span></a> : null}
+    <a class="mobile-bar__item mobile-bar__item--primary" href={ctaHref}><Icon name={IconName.CALENDAR}/><span>{ctaLabel}</span></a>
+  </div>
+}

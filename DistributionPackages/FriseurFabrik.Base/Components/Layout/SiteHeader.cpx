@@ -1,0 +1,38 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+from "../Data/Img.cpx" import { Img }
+
+// The menu is a content collection of menu items maintained by the editors
+export component SiteHeader {
+  homeHref: string
+  salonName: string
+  tagline?: string
+  logo?: Img
+  menu: slot
+  ctaLabel?: string
+  ctaHref?: string
+  phoneLabel?: string
+  phoneHref?: string
+
+  render <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="brand" href={homeHref}>
+        {logo !== null
+          ? <img class="brand__logo" src={logo?.src ?? ""} alt={salonName} width={logo?.width} height={logo?.height}/>
+          : <span class="brand__text"><span class="brand__name">{salonName}</span>{tagline !== null ? <span class="brand__tagline">{tagline ?? ""}</span> : null}</span>}
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+        <span class="nav-toggle__open"><Icon name={IconName.MENU}/></span>
+        <span class="nav-toggle__close"><Icon name={IconName.CLOSE}/></span>
+        <span class="sr-only">Menü</span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Hauptnavigation">
+        {menu}
+        <div class="site-nav__actions">
+          {phoneHref !== null ? <a class="site-nav__phone" href={phoneHref ?? ""}><Icon name={IconName.PHONE}/><span>{phoneLabel ?? ""}</span></a> : null}
+          {ctaHref !== null ? <a class="btn btn--primary" href={ctaHref ?? ""}>{ctaLabel ?? ""}</a> : null}
+        </div>
+      </nav>
+    </div>
+  </header>
+}

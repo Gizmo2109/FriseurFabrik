@@ -3,7 +3,7 @@ FROM php:8.4-cli
 RUN apt-get update \
     # install GraphicsMagick
 	&& apt-get install -y \
-		libgraphicsmagick1-dev graphicsmagick zlib1g-dev libicu-dev gcc g++ --no-install-recommends \
+		libgraphicsmagick1-dev graphicsmagick zlib1g-dev libicu-dev gcc g++ git unzip --no-install-recommends \
 	&& pecl -vvv install gmagick-beta && docker-php-ext-enable gmagick \
     # pdo_mysql
     && docker-php-ext-install pdo_mysql \
@@ -16,6 +16,9 @@ RUN apt-get update \
     # the image ships no php.ini; Flow needs one to pass to sub-processes (php -c)
     && cp "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
+
+# composer, so dependencies can be installed inside the container (host php lacks extensions)
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /app
 EXPOSE 8081

@@ -1,0 +1,90 @@
+'FriseurFabrik.Base:Content.Features':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Vorteile / Leistungen (Icons)'
+    icon: 'star'
+    position: 35
+  childNodes:
+    items:
+      type: 'FriseurFabrik.Base:Collection.FeatureItems'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift (optional)'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.FeatureItem':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  ui:
+    label: 'Vorteil'
+    icon: 'star'
+    inspector:
+      groups:
+        feature:
+          label: 'Vorteil'
+          icon: 'star'
+  properties:
+    icon:
+      type: string
+      defaultValue: 'scissors'
+      ui:
+        label: 'Symbol'
+        reloadIfChanged: true
+        inspector:
+          group: feature
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              scissors:
+                label: 'Schere'
+              color:
+                label: 'Farbe / Pinsel'
+              leaf:
+                label: 'Natur / Blatt'
+              heart:
+                label: 'Herz'
+              star:
+                label: 'Stern'
+              coffee:
+                label: 'Kaffee'
+              calendar:
+                label: 'Kalender'
+              parking:
+                label: 'Parken'
+              child:
+                label: 'Kinder'
+              beard:
+                label: 'Bart'
+              gift:
+                label: 'Gutschein'
+              ring:
+                label: 'Hochzeit / Braut'
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Titel'
+            autoparagraph: false
+            formatting: {}
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kurzer Text'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true

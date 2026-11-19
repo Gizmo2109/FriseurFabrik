@@ -1,0 +1,5 @@
+export component Csrf {
+  token: string
+
+  render <input type="hidden" name="__csrfToken" value={token}/>
+}

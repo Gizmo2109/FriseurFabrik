@@ -1,0 +1,28 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component FooterContact {
+  title: slot
+  salonName: string
+  street?: string
+  zipCity?: string
+  phoneLabel?: string
+  phoneHref?: string
+  email?: string
+  emailHref?: string
+  mapsHref?: string
+
+  render <div class="footer-col">
+    <p class="site-footer__heading">{title}</p>
+    <address class="site-footer__address">
+      <strong>{salonName}</strong>
+      {street !== null ? <span>{street ?? ""}</span> : null}
+      {zipCity !== null ? <span>{zipCity ?? ""}</span> : null}
+    </address>
+    <ul class="contact-list">
+      {phoneHref !== null ? <li><a href={phoneHref ?? ""}><Icon name={IconName.PHONE}/>{phoneLabel ?? ""}</a></li> : null}
+      {emailHref !== null ? <li><a href={emailHref ?? ""}><Icon name={IconName.MAIL}/>{email ?? ""}</a></li> : null}
+    </ul>
+    {mapsHref !== null ? <a class="link-arrow" href={mapsHref ?? ""} target="_blank" rel="noopener">Route planen <Icon name={IconName.ARROW}/></a> : null}
+  </div>
+}

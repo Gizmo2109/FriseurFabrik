@@ -1,0 +1,11 @@
+from "./AgendaItem.cpx" import { AgendaItem }
+
+export component AgendaDay {
+  label: string
+  items: list<AgendaItem>
+
+  render <section class="ff-agenda__day">
+    <h3 class="ff-agenda__date">{label}</h3>
+    {items}
+  </section>
+}

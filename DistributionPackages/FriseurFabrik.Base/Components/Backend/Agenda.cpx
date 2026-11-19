@@ -1,0 +1,11 @@
+from "./AgendaDay.cpx" import { AgendaDay }
+
+export component Agenda {
+  days: list<AgendaDay>
+  rangeLabel: string
+
+  render <div class="ff-agenda">
+    <p class="ff-muted">Bestätigte Termine {rangeLabel}</p>
+    {days.count > 0 ? <>{days}</> : <p class="ff-empty">In diesem Zeitraum sind keine Termine bestätigt.</p>}
+  </div>
+}

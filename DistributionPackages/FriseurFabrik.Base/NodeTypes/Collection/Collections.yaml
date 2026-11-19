@@ -1,0 +1,99 @@
+'FriseurFabrik.Base:Collection.Main':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Inhalt'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Constraint.Content.Main': true
+
+'FriseurFabrik.Base:Collection.PriceItems':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Preise'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.PriceItem': true
+
+'FriseurFabrik.Base:Collection.TeamMembers':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Teammitglieder'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.TeamMember': true
+
+'FriseurFabrik.Base:Collection.FeatureItems':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Vorteile'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.FeatureItem': true
+
+'FriseurFabrik.Base:Collection.FaqItems':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Fragen'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.FaqItem': true
+
+'FriseurFabrik.Base:Collection.Testimonials':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Kundenstimmen'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.Testimonial': true
+
+'FriseurFabrik.Base:Collection.Menu':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Menü'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.MenuItem': true
+
+'FriseurFabrik.Base:Collection.FooterColumns':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Footer-Spalten'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Constraint.Content.Footer': true
+
+'FriseurFabrik.Base:Collection.ImageCards':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Kacheln'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.ImageCard': true
+
+'FriseurFabrik.Base:Collection.InstagramPosts':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Beiträge'
+  constraints:
+    nodeTypes:
+      '*': false
+      'FriseurFabrik.Base:Content.InstagramPost': true

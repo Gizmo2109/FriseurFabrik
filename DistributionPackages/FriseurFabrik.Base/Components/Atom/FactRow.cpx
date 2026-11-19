@@ -1,0 +1,9 @@
+export component FactRow {
+  label: string
+  value: string
+
+  render <div class="facts__row">
+    <dt>{label}</dt>
+    <dd>{value}</dd>
+  </div>
+}

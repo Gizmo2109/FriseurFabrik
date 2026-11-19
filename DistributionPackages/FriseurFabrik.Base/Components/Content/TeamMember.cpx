@@ -1,0 +1,24 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+from "../Data/Img.cpx" import { Img }
+
+export component TeamMember {
+  photo?: Img
+  initials: string
+  name: slot
+  role: slot
+  bio: slot
+  instagramHref?: string
+
+  render <article class="member">
+    <div class="member__photo">
+      {photo !== null
+        ? <img src={photo?.src ?? ""} srcset={photo?.srcset} sizes="(min-width: 900px) 25vw, 50vw" alt={photo?.alt ?? ""} width={photo?.width} height={photo?.height} loading="lazy"/>
+        : <span class="member__initials" aria-hidden="true">{initials}</span>}
+    </div>
+    <h3 class="member__name">{name}</h3>
+    <p class="member__role">{role}</p>
+    <p class="member__bio">{bio}</p>
+    {instagramHref !== null ? <a class="member__social" href={instagramHref ?? ""} target="_blank" rel="noopener" aria-label="Instagram"><Icon name={IconName.INSTAGRAM}/></a> : null}
+  </article>
+}

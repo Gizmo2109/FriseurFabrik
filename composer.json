@@ -24,7 +24,11 @@
         "neos/contentgraph-doctrinedbaladapter": "~9.2.0",
         "neos/neos-ui": "~9.2.0",
         "neos/seo": "~4.1",
-        "neos/demo": "~9.2.0"
+        "packagefactory/neos-component-engine": "1.0.0-alpha9",
+        "packagefactory/component-engine": "1.0.0-alpha9",
+        "packagefactory/neos-componentview": "1.0.0-alpha6",
+        "friseurfabrik/base": "@dev",
+        "neos/symfonymailer": "^1.0"
     },
     "require-dev": {
         "neos/buildessentials": "~9.2.0",
@@ -38,6 +42,10 @@
         "distributionPackages": {
             "type": "path",
             "url": "./DistributionPackages/*"
+        },
+        "componentView": {
+            "type": "vcs",
+            "url": "https://codeberg.org/PackageFactory/neos-component-view.git"
         }
     },
     "replace": {
@@ -57,5 +65,7 @@
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
         "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
-    }
+    },
+    "minimum-stability": "alpha",
+    "prefer-stable": true
 }

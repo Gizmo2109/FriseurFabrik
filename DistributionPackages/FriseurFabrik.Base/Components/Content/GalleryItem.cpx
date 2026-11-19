@@ -1,0 +1,10 @@
+from "../Data/Img.cpx" import { Img }
+
+export component GalleryItem {
+  image: Img
+  largeSrc: string
+
+  render <a class="gallery__item" href={largeSrc} data-lightbox>
+    <img src={image.src} srcset={image.srcset} sizes="(min-width: 900px) 33vw, 50vw" alt={image.alt} width={image.width} height={image.height} loading="lazy"/>
+  </a>
+}

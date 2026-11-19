@@ -1,0 +1,79 @@
+# Andreas Schraud – Der Friseur, Mainviertel. Alte Website: Splash-Seite mit Textwand (Preiserhöhung) und "Weiter"-Button,
+# veraltetes WordPress-Theme, Preise nur auf externer Buchungsplattform.
+rating:
+  score: 3
+  previousWebsite: 'https://salonandreasschraud.de'
+  reason: 'Startseite ist eine Splash-Seite mit Textwand und Weiter-Button, veraltetes Design, Datenschutzerklärung mit Google+ und Twitter, Preise nur extern'
+nodeName: schraud
+domains: ['schraud.localhost']
+site:
+  salonName: 'Andreas Schraud'
+  tagline: 'Der Friseur im Mainviertel'
+  ownerName: 'Andreas Schraud'
+  street: 'Zeller Straße 20'
+  postalCode: '97082'
+  city: 'Würzburg'
+  district: 'Mainviertel'
+  phone: '0931 53881'
+  email: 'info@andreas-schraud.de'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Zeller+Stra%C3%9Fe+20%2C+97082+W%C3%BCrzburg'
+  instagramUrl: 'https://www.instagram.com/salon_andreas_schraud/'
+  hoursTuesday: '08:30 – 18:00'
+  hoursWednesday: '08:30 – 18:00'
+  hoursThursday: '08:30 – 18:00'
+  hoursFriday: '08:30 – 18:00'
+  hoursSaturday: '08:00 – 14:00'
+  hoursNote: 'Ausschließlich mit Termin.'
+  theme: 'classic'
+  bookingButtonLabel: 'Termin anfragen'
+  parkingText: '<p>Im wunderschönen Mainviertel, unterhalb der Festung Marienberg.</p>'
+images:
+  hero: blowdry
+  about: styling
+  prices: scissors
+  salon: lounge
+  story: braid
+  gallery: [updo, cutting, wind, interior-plants, bob, comb-cut, curly, color-brush]
+  instagram: [updo, braid, wind, bob, curly, short-platinum, ombre, long-brunette]
+home:
+  kicker: 'Seit 1996 in Würzburg'
+  headline: 'Ihr neuer Style – <em>mit Leidenschaft</em> gemacht'
+  text: 'Friseurmeister Andreas Schraud und sein Team beraten Sie persönlich – im Mainviertel, unterhalb der Festung Marienberg.'
+  about:
+    kicker: 'Über uns'
+    title: 'Mit Leidenschaft seit 1996'
+    text: '<p>Seit 1996 führe ich mit Leidenschaft meinen Salon in Würzburg, den ich damals nach meiner Meisterprüfung von meinem Ausbildungsmeister übernehmen durfte.</p><p>Unser Ziel ist es, Sie Ihren Wünschen entsprechend zu verwöhnen und Ihnen zu Ihrem neuen Style zu verhelfen. Mein Team und ich beraten Sie gerne.</p><p><em>Andreas Schraud</em></p>'
+  galleryTitle: 'Einblicke'
+  pricesTeaser: 'Unsere aktuellen Preise und freien Termine finden Sie jederzeit online.'
+  instagramTitle: 'Zeig uns deinen Style: #salon_andreas_schraud'
+features:
+  - { icon: heart, title: 'Haare spenden', text: 'Über 100 gespendete Zöpfe für Perücken für krebskranke Menschen in einem Jahr.' }
+  - { icon: star, title: 'Meisterbetrieb seit 1996', text: 'Erfahrung, Präzision und erstklassige Produkte.' }
+  - { icon: calendar, title: 'Online buchen', text: 'Termine und Gutscheine bequem online – rund um die Uhr.' }
+  - { icon: gift, title: 'Gutscheine', text: 'Das schönste Geschenk: Zeit für sich und einen neuen Look.' }
+prices:
+  headline: 'Leistungen & Preise'
+  intro: 'Unsere vollständige, aktuelle Preisliste finden Sie auf unserer Buchungsseite – dort können Sie auch direkt einen freien Termin wählen.'
+  lists: []
+  externalLink:
+    title: 'Preise & Online-Buchung'
+    text: 'Alle Leistungen mit aktuellen Preisen (Stand 01.11.2026) bei Studiobookr.'
+    label: 'Preise ansehen'
+    url: 'https://www.studiobookr.com/friseursalon-andreas-schraud-41395'
+team:
+  title: 'Unser Team'
+  members:
+    - { name: 'Andreas', role: 'Inhaber · Friseurmeister', bio: 'Führt den Salon seit 1996.' }
+    - { name: 'Tanja', role: 'Stylistin' }
+    - { name: 'Nafisa', role: 'Team' }
+salonPage:
+  headline: 'Unser Salon im Mainviertel'
+  intro: 'Seit Mai 2019 in der Zeller Straße 20 – unterhalb der Festung Marienberg.'
+  kicker: 'Im Kampf gegen den Krebs'
+  title: 'Haarspenden für den guten Zweck'
+  text: '<p>Dank Eurer Mithilfe konnten wir in einem Jahr über 100 Zöpfe spenden, aus denen Perücken für krebskranke Menschen gemacht werden. TV Mainfranken hat uns dafür besucht und einen Beitrag gedreht.</p><p>Sie möchten Ihre Haare spenden? Sprechen Sie uns bei Ihrem nächsten Termin einfach an.</p>'
+faq:
+  - ['Kann ich auch ohne Termin vorbeikommen?', '<p>Wir arbeiten ausschließlich mit Termin. Fragen Sie Ihren Wunschtermin einfach online an oder rufen Sie uns an: 0931 53881.</p>']
+  - ['Gibt es Gutscheine?', '<p>Ja, Gutscheine können Sie <a href="https://www.studiobookr.com/VoucherOrders/friseursalon-andreas-schraud-der-friseur-41395" target="_blank" rel="noopener">online kaufen</a>.</p>']
+legal:
+  company: 'Friseurgeschäft Andreas Schraud'

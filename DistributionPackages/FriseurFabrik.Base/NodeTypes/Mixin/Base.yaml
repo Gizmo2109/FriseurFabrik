@@ -1,0 +1,75 @@
+##
+# Abstract base types and constraint markers shared by all salon sites
+#
+'FriseurFabrik.Base:Document':
+  abstract: true
+  superTypes:
+    'Neos.Neos:Document': true
+  properties:
+    # menus are built by hand in header and footer, a page cannot decide whether it is linked
+    hiddenInMenu:
+      ui:
+        inspector:
+          hidden: true
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'FriseurFabrik.Base:Document.Page': true
+
+'FriseurFabrik.Base:Content':
+  abstract: true
+  superTypes:
+    'Neos.Neos:Content': true
+
+# marks content that may be placed into the main collection of a page
+'FriseurFabrik.Base:Constraint.Content.Main':
+  abstract: true
+
+##
+# Section options shared by most content elements
+#
+'FriseurFabrik.Base:Mixin.Section':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        section:
+          label: 'Abschnitt'
+          icon: 'paint-brush'
+          position: 50
+  properties:
+    tone:
+      type: string
+      defaultValue: 'default'
+      ui:
+        label: 'Hintergrund'
+        reloadIfChanged: true
+        inspector:
+          group: section
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              default:
+                label: 'Standard'
+              muted:
+                label: 'Dezent abgesetzt'
+              brand:
+                label: 'Akzentfarbe'
+              dark:
+                label: 'Dunkel'
+    sectionId:
+      type: string
+      ui:
+        label: 'Sprungmarke (z.B. preise)'
+        reloadIfChanged: true
+        help:
+          message: 'Optional. Ermöglicht Links wie /#preise direkt auf diesen Abschnitt.'
+        inspector:
+          group: section
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^[a-z0-9-]*$/'
+
+# marks elements that may be placed into the footer columns
+'FriseurFabrik.Base:Constraint.Content.Footer':
+  abstract: true

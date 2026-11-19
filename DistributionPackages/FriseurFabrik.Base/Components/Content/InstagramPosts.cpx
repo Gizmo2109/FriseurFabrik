@@ -1,0 +1,18 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component InstagramPosts {
+  title: slot
+  items: slot
+  profileHref?: string
+  handle?: string
+
+  render <div class="insta-posts">
+    <header class="insta__head">
+      <h2 class="section-head__title">{title}</h2>
+      {profileHref !== null ? <a class="btn btn--secondary" href={profileHref ?? ""} target="_blank" rel="noopener"><Icon name={IconName.INSTAGRAM}/>{handle ?? "Instagram"}</a> : null}
+    </header>
+    {items}
+    <p class="insta-posts__notice">Beim Laden eines Beitrags werden Daten an Instagram (Meta Platforms) übertragen.</p>
+  </div>
+}

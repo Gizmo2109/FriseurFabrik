@@ -1,0 +1,48 @@
+from "../Atom/FactRow.cpx" import { FactRow }
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+// Page behind the links in the customer e-mails: accept a proposed time or cancel. Changes only happen via POST.
+export component AppointmentAnswer {
+  heading: string
+  intro: string
+  statusLabel?: string
+  facts: list<FactRow>
+  notice?: string
+  action: string
+  token: string
+  canAccept: boolean
+  canCancel: boolean
+  phoneLabel?: string
+  phoneHref?: string
+
+  render <section class="section section--muted section--answer">
+    <div class="container">
+      <div class="answer">
+        <p class="kicker">Ihre Terminanfrage</p>
+        <h1 class="answer__title">{heading}</h1>
+        {notice !== null ? <div class="form-notice form-notice--success is-visible" role="status"><Icon name={IconName.CHECK}/><div>{notice ?? ""}</div></div> : null}
+        <p class="answer__intro">{intro}</p>
+        {statusLabel !== null ? <p class="answer__status">Status: <strong>{statusLabel ?? ""}</strong></p> : null}
+        <dl class="facts">{facts}</dl>
+        <div class="answer__actions">
+          {canAccept
+            ? <form method="post" action={action}>
+                <input type="hidden" name="token" value={token}/>
+                <input type="hidden" name="decision" value="accept"/>
+                <button class="btn btn--primary btn--large" type="submit"><Icon name={IconName.CHECK}/>Termin annehmen</button>
+              </form>
+            : null}
+          {canCancel
+            ? <form method="post" action={action} data-confirm="Möchten Sie den Termin wirklich absagen?">
+                <input type="hidden" name="token" value={token}/>
+                <input type="hidden" name="decision" value="cancel"/>
+                <button class="btn btn--secondary btn--large" type="submit">{canAccept ? "Vorschlag ablehnen" : "Termin absagen"}</button>
+              </form>
+            : null}
+        </div>
+        {phoneHref !== null ? <p class="answer__phone">Fragen? Rufen Sie uns an: <a href={phoneHref ?? ""}><Icon name={IconName.PHONE}/>{phoneLabel ?? ""}</a></p> : null}
+      </div>
+    </div>
+  </section>
+}

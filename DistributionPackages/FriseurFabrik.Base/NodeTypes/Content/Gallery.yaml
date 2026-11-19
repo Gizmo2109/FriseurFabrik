@@ -1,0 +1,60 @@
+'FriseurFabrik.Base:Content.Gallery':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Bildergalerie (Ambiente)'
+    icon: 'images'
+    position: 30
+    inspector:
+      groups:
+        gallery:
+          label: 'Galerie'
+          icon: 'images'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift (optional)'
+            autoparagraph: false
+            formatting: {}
+    intro:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Einleitung (optional)'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+    images:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        label: 'Bilder'
+        reloadIfChanged: true
+        inspector:
+          group: gallery
+          editorOptions:
+            constraints:
+              mediaTypes: ['image/*']
+    layout:
+      type: string
+      defaultValue: 'grid'
+      ui:
+        label: 'Darstellung'
+        reloadIfChanged: true
+        inspector:
+          group: gallery
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              grid:
+                label: 'Raster'
+              mosaic:
+                label: 'Mosaik (erstes Bild groß)'

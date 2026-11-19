@@ -1,0 +1,372 @@
+##
+# The site node of a salon website. Holds all salon wide master data
+# (contact, opening hours, social media, design) used by header, footer and several content elements.
+#
+'FriseurFabrik.Base:Document.Salon':
+  superTypes:
+    'Neos.Neos:Site': true
+    'FriseurFabrik.Base:Document': true
+  ui:
+    label: 'Salon-Startseite'
+    icon: 'cut'
+    inspector:
+      tabs:
+        salon:
+          label: 'Salon'
+          icon: 'cut'
+          position: 5
+      groups:
+        salonMaster:
+          label: 'Stammdaten'
+          icon: 'store'
+          tab: salon
+          position: 10
+        salonContact:
+          label: 'Kontakt & Adresse'
+          icon: 'map-marker'
+          tab: salon
+          position: 20
+        salonHours:
+          label: 'Öffnungszeiten'
+          icon: 'clock'
+          tab: salon
+          position: 30
+        salonSocial:
+          label: 'Social Media'
+          icon: 'share-alt'
+          tab: salon
+          position: 40
+        salonDesign:
+          label: 'Design'
+          icon: 'paint-brush'
+          tab: salon
+          position: 50
+        salonBooking:
+          label: 'Terminanfrage'
+          icon: 'calendar'
+          tab: salon
+          position: 60
+  childNodes:
+    header:
+      type: 'FriseurFabrik.Base:Content.SiteHeader'
+      position: 'start'
+    main:
+      type: 'FriseurFabrik.Base:Collection.Main'
+    footer:
+      type: 'FriseurFabrik.Base:Content.SiteFooter'
+      position: 'end'
+  properties:
+    salonName:
+      type: string
+      ui:
+        label: 'Name des Salons'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonMaster
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': []
+    tagline:
+      type: string
+      ui:
+        label: 'Slogan'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonMaster
+          editorOptions:
+            placeholder: 'z.B. Ihr Friseur in der Sanderau'
+    logo:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Logo'
+        reloadPageIfChanged: true
+        help:
+          message: 'Optional. Ohne Logo wird der Salonname als Schriftzug angezeigt.'
+        inspector:
+          group: salonMaster
+    ownerName:
+      type: string
+      ui:
+        label: 'Inhaber/in (für Impressum & Footer)'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonMaster
+    street:
+      type: string
+      ui:
+        label: 'Straße und Hausnummer'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+    postalCode:
+      type: string
+      ui:
+        label: 'PLZ'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+    city:
+      type: string
+      ui:
+        label: 'Ort'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+    district:
+      type: string
+      ui:
+        label: 'Stadtteil'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+          editorOptions:
+            placeholder: 'z.B. Sanderau'
+    phone:
+      type: string
+      ui:
+        label: 'Telefon'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+          editorOptions:
+            placeholder: '0931 123456'
+    email:
+      type: string
+      ui:
+        label: 'E-Mail'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+    whatsapp:
+      type: string
+      ui:
+        label: 'WhatsApp-Nummer (international)'
+        reloadPageIfChanged: true
+        help:
+          message: 'Optional, z.B. 49931123456. Zeigt einen WhatsApp-Button.'
+        inspector:
+          group: salonContact
+    mapsUrl:
+      type: string
+      ui:
+        label: 'Link zu Google Maps / Routenplaner'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https?:\/\/\S+)?$/'
+    parkingInfo:
+      type: string
+      ui:
+        label: 'Hinweis Anfahrt & Parken'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonContact
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+    hoursMonday:
+      type: string
+      ui:
+        label: 'Montag'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'leer = geschlossen, z.B. 09:00 – 18:00'
+    hoursTuesday:
+      type: string
+      ui:
+        label: 'Dienstag'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'leer = geschlossen, z.B. 09:00 – 18:00'
+    hoursWednesday:
+      type: string
+      ui:
+        label: 'Mittwoch'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'leer = geschlossen, z.B. 09:00 – 18:00'
+    hoursThursday:
+      type: string
+      ui:
+        label: 'Donnerstag'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'leer = geschlossen, z.B. 09:00 – 18:00'
+    hoursFriday:
+      type: string
+      ui:
+        label: 'Freitag'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'leer = geschlossen, z.B. 09:00 – 18:00'
+    hoursSaturday:
+      type: string
+      ui:
+        label: 'Samstag'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'leer = geschlossen, z.B. 09:00 – 18:00'
+    hoursSunday:
+      type: string
+      ui:
+        label: 'Sonntag'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'leer = geschlossen, z.B. 09:00 – 18:00'
+    hoursNote:
+      type: string
+      ui:
+        label: 'Hinweis zu den Öffnungszeiten'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonHours
+          editorOptions:
+            placeholder: 'z.B. Termine auch außerhalb nach Vereinbarung'
+    instagramUrl:
+      type: string
+      ui:
+        label: 'Instagram-Profil (URL)'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonSocial
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https?:\/\/\S+)?$/'
+    facebookUrl:
+      type: string
+      ui:
+        label: 'Facebook-Seite (URL)'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonSocial
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https?:\/\/\S+)?$/'
+    tiktokUrl:
+      type: string
+      ui:
+        label: 'TikTok-Profil (URL)'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonSocial
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https?:\/\/\S+)?$/'
+    googleReviewsUrl:
+      type: string
+      ui:
+        label: 'Google-Bewertungen (URL)'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonSocial
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https?:\/\/\S+)?$/'
+    instagramAccessToken:
+      type: string
+      ui:
+        label: 'Instagram API Access-Token'
+        help:
+          message: 'Optional. Mit einem Token der Instagram API (Instagram-Login) zeigt das Element "Instagram" automatisch die neuesten Beiträge. Ohne Token werden die manuell gepflegten Bilder gezeigt.'
+        inspector:
+          group: salonSocial
+    theme:
+      type: string
+      defaultValue: 'classic'
+      ui:
+        label: 'Design-Vorlage'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonDesign
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              classic:
+                label: 'Klassisch elegant (Creme, Gold, Serifen)'
+              modern:
+                label: 'Modern & klar (Weiß, Anthrazit, Rosé)'
+              natur:
+                label: 'Natürlich (Salbeigrün, Sand)'
+              barber:
+                label: 'Barber (Dunkel, Messing)'
+              pastell:
+                label: 'Pastell (Puder, Flieder)'
+    accentColor:
+      type: string
+      ui:
+        label: 'Eigene Akzentfarbe (optional)'
+        reloadPageIfChanged: true
+        help:
+          message: 'Hex-Farbwert wie #b08d57. Überschreibt die Akzentfarbe der Vorlage.'
+        inspector:
+          group: salonDesign
+          editorOptions:
+            placeholder: '#b08d57'
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(#[0-9a-fA-F]{6})?$/'
+    bookingButtonLabel:
+      type: string
+      defaultValue: 'Termin anfragen'
+      ui:
+        label: 'Beschriftung Termin-Button'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonBooking
+    notificationEmail:
+      type: string
+      ui:
+        label: 'E-Mail für neue Terminanfragen'
+        help:
+          message: 'An diese Adresse wird jede neue Terminanfrage geschickt. Leer = E-Mail-Adresse aus "Kontakt & Adresse".'
+        inspector:
+          group: salonBooking
+      validation:
+        'Neos.Neos/Validation/EmailAddressValidator': []
+    externalBookingUrl:
+      type: string
+      ui:
+        label: 'Externes Buchungstool (URL, optional)'
+        reloadPageIfChanged: true
+        help:
+          message: 'Wenn gesetzt, verlinkt der Termin-Button auf dieses Tool (z.B. Treatwell, Planity) statt auf die Terminseite.'
+        inspector:
+          group: salonBooking
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https?:\/\/\S+)?$/'
+  references:
+    bookingPage:
+      constraints:
+        maxItems: 1
+      ui:
+        label: 'Seite mit dem Terminformular'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonBooking
+          editorOptions:
+            nodeTypes: ['FriseurFabrik.Base:Document']
+    privacyPage:
+      constraints:
+        maxItems: 1
+      ui:
+        label: 'Datenschutz-Seite'
+        reloadPageIfChanged: true
+        inspector:
+          group: salonBooking
+          editorOptions:
+            nodeTypes: ['FriseurFabrik.Base:Document']

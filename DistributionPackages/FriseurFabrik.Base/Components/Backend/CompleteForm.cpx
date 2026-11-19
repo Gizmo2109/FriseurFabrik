@@ -1,0 +1,15 @@
+from "./Csrf.cpx" import { Csrf }
+
+export component CompleteForm {
+  action: string
+  csrf: string
+
+  render <form class="ff-panel ff-form" method="post" action={action}>
+    <Csrf token={csrf}/>
+    <h3 class="ff-panel__title">Nach dem Termin</h3>
+    <p class="ff-contact-buttons">
+      <button class="neos-button neos-button-success" type="submit" name="moduleArguments[result]" value="done">Erledigt</button>
+      <button class="neos-button" type="submit" name="moduleArguments[result]" value="noshow">Nicht erschienen</button>
+    </p>
+  </form>
+}

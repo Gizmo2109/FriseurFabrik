@@ -1,0 +1,25 @@
+{
+    "name": "friseurfabrik/base",
+    "type": "neos-site",
+    "description": "Shared node types, CPX components and renderers for hair salon websites (multi-site)",
+    "license": "proprietary",
+    "require": {
+        "neos/neos": "^9.2",
+        "neos/neos-ui": "^9.2",
+        "neos/seo": "^4.1",
+        "neos/symfonymailer": "^1.0",
+        "packagefactory/neos-component-engine": "1.0.0-alpha9",
+        "packagefactory/neos-componentview": "1.0.0-alpha6"
+    },
+    "autoload": {
+        "psr-4": {
+            "FriseurFabrik\\Base\\": "Classes/",
+            "FriseurFabrik\\Base\\Components\\": "Generated/Components/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "FriseurFabrik.Base"
+        }
+    }
+}

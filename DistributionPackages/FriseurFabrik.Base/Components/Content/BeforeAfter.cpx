@@ -1,0 +1,28 @@
+from "../Data/Img.cpx" import { Img }
+
+// Comparison slider: the "after" image is clipped by a CSS variable that main.js updates from the range input
+export component BeforeAfter {
+  title: slot
+  text: slot
+  before?: Img
+  after?: Img
+
+  render <div class="before-after">
+    <header class="section-head">
+      <h2 class="section-head__title">{title}</h2>
+      <div class="section-head__intro">{text}</div>
+    </header>
+    {before !== null && after !== null
+      ? <div class="compare" data-compare>
+          <img class="compare__img" src={before?.src ?? ""} srcset={before?.srcset} sizes="(min-width: 1200px) 1100px, 100vw" alt={before?.alt ?? ""} width={before?.width} height={before?.height} loading="lazy"/>
+          <div class="compare__after">
+            <img class="compare__img" src={after?.src ?? ""} srcset={after?.srcset} sizes="(min-width: 1200px) 1100px, 100vw" alt={after?.alt ?? ""} width={after?.width} height={after?.height} loading="lazy"/>
+          </div>
+          <span class="compare__label compare__label--before">Vorher</span>
+          <span class="compare__label compare__label--after">Nachher</span>
+          <span class="compare__handle" aria-hidden="true"></span>
+          <input class="compare__range" type="range" min="0" max="100" value="50" aria-label="Vorher-Nachher-Vergleich verschieben"/>
+        </div>
+      : <p class="empty-hint">Bitte im Inspector ein Vorher- und ein Nachher-Foto auswählen.</p>}
+  </div>
+}

@@ -1,0 +1,92 @@
+# Friseur Leicht – Altstadt. Alte Website: Layout aus den 2000ern (feste Breite, kein Viewport, winzige Schrift), nicht mobil nutzbar.
+# Hinweis: Gelbe Seiten führt noch "Semmelstr. 75" – die Website nennt Gerberstraße 2 (übernommen).
+rating:
+  score: 2
+  previousWebsite: 'https://www.friseurleicht.de'
+  reason: 'Veraltetes Layout mit fester Breite, kein mobiles Layout, kaum Bilder, Preise als unformatierte Tabelle'
+nodeName: friseurleicht
+domains: ['leicht.localhost']
+site:
+  salonName: 'Friseur Leicht'
+  tagline: 'Typgerecht. Entspannt. Neu gestylt.'
+  ownerName: 'Karin Leicht'
+  street: 'Gerberstraße 2'
+  postalCode: '97070'
+  city: 'Würzburg'
+  district: 'Altstadt'
+  phone: '0931 59147'
+  email: 'leicht.k@web.de'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Gerberstra%C3%9Fe+2%2C+97070+W%C3%BCrzburg'
+  hoursTuesday: '10:00 – 18:00'
+  hoursWednesday: '10:00 – 18:00'
+  hoursThursday: '10:00 – 18:00'
+  hoursFriday: '10:00 – 19:00'
+  hoursSaturday: '09:00 – 14:00'
+  hoursNote: 'Telefonische Anmeldung erbeten.'
+  theme: 'natur'
+  bookingButtonLabel: 'Termin anfragen'
+  parkingText: '<p>Gut erreichbar – ob zu Fuß, mit dem Fahrrad, mit öffentlichen Verkehrsmitteln oder mit dem Auto.</p>'
+images:
+  hero: wind
+  about: styling
+  prices: color-brush
+  salon: interior-plants
+  story: coloring-wet
+  gallery: [ombre, color-bowl, long-brunette, cutting, copper, blowdry, curly, scissors]
+home:
+  kicker: 'Ihr Friseur in der Würzburger Altstadt'
+  headline: 'Entspannt, glücklich und <em>neu gestylt</em>'
+  text: 'Professionelle, typgerechte Beratung und die neuesten Trends – mit Zeit für Sie und Ihren Stil.'
+  about:
+    kicker: 'Hallo, ich bin Karin'
+    title: 'Jede Frau, jeder Mann und jedes Kind ist einzigartig'
+    text: '<p>Meine Philosophie ist eine professionelle und typgerechte Beratung sowie die Umsetzung der neuesten Trends. Dabei nehme ich mir ausreichend Zeit, um den passenden Stil für Ihren Typ zu finden.</p><p>Außerdem ist mir eine Atmosphäre wichtig, in der Sie sich wohlfühlen und der Hektik des Alltags entfliehen können. Ich freue mich auf Ihren Besuch!</p><p><em>Ihre Karin Leicht</em></p>'
+  galleryTitle: 'Farbe, Schnitt & Strähnen'
+  pricesTeaser: 'Von Cut & Go bis INOA-Coloration – alle Preise für Damen, Herren und Kinder auf einen Blick.'
+features:
+  - { icon: heart, title: 'Typgerechte Beratung', text: 'Wir finden gemeinsam den Schnitt und die Farbe, die zu Ihnen passen.' }
+  - { icon: color, title: 'Farbe mit L’Oréal', text: 'Schonende Colorationen und Strähnentechniken – bis hin zu INOA ohne Ammoniak.' }
+  - { icon: leaf, title: 'Kérastase-Pflege', text: 'Hochwertige Pflege, verbunden mit wohltuenden Massage-Ritualen.' }
+  - { icon: child, title: 'Für die ganze Familie', text: 'Schnitttechniken für Damen, Herren und Kinder.' }
+prices:
+  headline: 'Preise'
+  intro: 'Preise je nach Aufwand und Haarlänge. Terminvereinbarung erwünscht.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Cut & Go', 'ab 34,00 €']
+        - ['Schnitt & Frisur', 'ab 44,00 €']
+        - ['Fönen', 'ab 28,00 €']
+        - ['Umformung', 'ab 53,00 €']
+        - ['Farbe', 'ab 38,50 €']
+        - ['INOA (Farbe)', 'ab 43,50 €', 'Coloration ohne Ammoniak']
+        - ['Softcoloration', 'ab 33,50 €']
+        - ['Strähnen', 'ab 51,00 €']
+        - ['Pflegebehandlung', 'ab 7,50 €']
+    - title: 'Herren'
+      items:
+        - ['Schnitt & Styling', 'ab 32,00 €']
+        - ['Maschinenschnitt', 'ab 19,50 €']
+        - ['Färben', 'ab 38,50 €']
+        - ['Haarwasser oder Pflege', 'ab 5,50 €']
+    - title: 'Kinder & Extras'
+      items:
+        - ['Kinder bis 12 Jahre', 'ab 23,50 €', 'nach Aufwand']
+        - ['Wimpern färben', 'ab 11,00 €']
+        - ['Augenbrauen färben', 'ab 10,50 €']
+        - ['Augenbrauen zupfen', 'ab 10,00 €']
+  note: 'Preise gültig ab 01.07.2026 inkl. der gesetzlichen MwSt. Alle Preise in Euro.'
+team:
+  title: 'Ihre Friseurin'
+  members:
+    - { name: 'Karin Leicht', role: 'Inhaberin', bio: 'Schnitttechniken für Damen, Herren und Kinder, weiche Umformungen, Colorationen und Strähnentechniken.' }
+salonPage:
+  headline: 'Zeit für Sie – mitten in der Altstadt'
+  intro: 'Ein Ort zum Abschalten, an dem Sie in Ruhe beraten werden.'
+  kicker: 'Kérastase & L’Oréal'
+  title: 'Farbe, die das Leben bunt macht'
+  text: '<p>Durch das Spielen mit Colorationen und verschiedenen Strähnchentechniken gestalte ich das Leben bunt! Gemeinsam mit Ihnen finde ich die passende Farb-, Schnitt- und Strähnchentechnik.</p><p>Bei Colorationen setze ich auf die schonenden Farben von L’Oréal. Verbunden mit verschiedenen Massage-Ritualen wird die hochwertige Kérastase-Pflegeserie angewendet.</p>'
+  brands: 'Kérastase und L’Oréal Professionnel (inkl. INOA)'
+faq:
+  - ['Brauche ich einen Termin?', '<p>Ja, wir bitten um telefonische Anmeldung unter 0931 59147 – oder Sie nutzen einfach unsere Online-Terminanfrage.</p>']
+  - ['Schneiden Sie auch Kinderhaare?', '<p>Ja! Kinder bis 12 Jahre zahlen nach Aufwand ab 23,50 €.</p>']

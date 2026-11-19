@@ -1,0 +1,27 @@
+from "../Data/Img.cpx" import { Img }
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+// Privacy friendly: only a preview is shown, main.js loads Instagram's embed after the click on the button
+export component InstagramPost {
+  postUrl?: string
+  image?: Img
+  caption: slot
+
+  render <article class="insta-post" data-instagram-post={postUrl}>
+    <div class="insta-post__preview">
+      {image !== null
+        ? <img src={image?.src ?? ""} alt={image?.alt ?? ""} width={image?.width} height={image?.height} loading="lazy"/>
+        : <div class="insta-post__placeholder"><Icon name={IconName.INSTAGRAM}/></div>}
+    </div>
+    <div class="insta-post__body">
+      <p class="insta-post__caption">{caption}</p>
+      {postUrl !== null
+        ? <div class="insta-post__actions">
+            <button class="btn btn--primary btn--small" type="button" data-instagram-load>Beitrag laden</button>
+            <a class="link-arrow" href={postUrl ?? ""} target="_blank" rel="noopener">Auf Instagram ansehen <Icon name={IconName.ARROW}/></a>
+          </div>
+        : <p class="empty-hint">Bitte im Inspector den Link zum Beitrag eintragen.</p>}
+    </div>
+  </article>
+}

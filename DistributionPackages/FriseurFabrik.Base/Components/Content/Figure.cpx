@@ -1,0 +1,11 @@
+from "../Data/Img.cpx" import { Img }
+
+export component Figure {
+  image?: Img
+  caption: slot
+
+  render <figure class="figure">
+    {image !== null ? <img src={image?.src ?? ""} srcset={image?.srcset} sizes="(min-width: 1200px) 1200px, 100vw" alt={image?.alt ?? ""} width={image?.width} height={image?.height} loading="lazy"/> : <div class="media-placeholder"></div>}
+    <figcaption>{caption}</figcaption>
+  </figure>
+}

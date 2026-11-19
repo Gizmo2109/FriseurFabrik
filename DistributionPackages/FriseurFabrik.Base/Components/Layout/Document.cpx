@@ -1,0 +1,46 @@
+// The HTML skeleton of every page. The doctype is prepended by the PHP renderer (CPX has no doctype syntax).
+export component Document {
+  lang: string
+  title: string
+  description?: string
+  canonical?: string
+  ogImage?: string
+  robots?: string
+  theme: string
+  editMode: boolean
+  styleAttr?: string
+  stylesheet: string
+  script: string
+  favicon?: string
+  head: slot
+  header: slot
+  main: slot
+  footer: slot
+  bodyEnd: slot
+
+  render <html lang={lang} data-theme={theme} data-edit-mode={editMode ? "true" : null}>
+    <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <title>{title}</title>
+      {description !== null ? <meta name="description" content={description ?? ""}/> : null}
+      {robots !== null ? <meta name="robots" content={robots ?? ""}/> : null}
+      {canonical !== null ? <link rel="canonical" href={canonical ?? ""}/> : null}
+      <meta property="og:type" content="website"/>
+      <meta property="og:title" content={title}/>
+      {description !== null ? <meta property="og:description" content={description ?? ""}/> : null}
+      {ogImage !== null ? <meta property="og:image" content={ogImage ?? ""}/> : null}
+      {favicon !== null ? <link rel="icon" href={favicon ?? ""}/> : null}
+      <link rel="stylesheet" href={stylesheet}/>
+      <script src={script} defer></script>
+      {head}
+    </head>
+    <body style={styleAttr}>
+      <a class="skip-link" href="#main">Zum Inhalt springen</a>
+      {header}
+      <main id="main">{main}</main>
+      {footer}
+      {bodyEnd}
+    </body>
+  </html>
+}

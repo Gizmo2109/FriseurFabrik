@@ -1,0 +1,31 @@
+from "./Csrf.cpx" import { Csrf }
+
+export component PageLockRow {
+  title: string
+  path: string
+  depth: string
+  locked: boolean
+  inherited: boolean
+  action: string
+  csrf: string
+  nodeId: string
+
+  render <tr>
+    <td style="padding-left:{depth}px"><strong>{title}</strong><br/><span class="ff-muted">{path}</span></td>
+    <td>
+      {locked
+        ? <span class="ff-badge ff-badge--abgesagt">gesperrt</span>
+        : inherited ? <span class="ff-badge ff-badge--vorgeschlagen">gesperrt (über übergeordnete Seite)</span> : <span class="ff-badge ff-badge--bestaetigt">bearbeitbar</span>}
+    </td>
+    <td class="ff-actions">
+      {inherited
+        ? null
+        : <form method="post" action={action}>
+            <Csrf token={csrf}/>
+            <input type="hidden" name="moduleArguments[node]" value={nodeId}/>
+            <input type="hidden" name="moduleArguments[lock]" value={locked ? "0" : "1"}/>
+            <button class={["neos-button", locked ? "neos-button-success" : "neos-button-danger"]} type="submit">{locked ? "Freigeben" : "Sperren"}</button>
+          </form>}
+    </td>
+  </tr>
+}

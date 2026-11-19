@@ -1,0 +1,74 @@
+##
+# Selected Instagram posts. Shows a preview card; the original post is only loaded from Instagram after a click
+# (no data goes to Meta before the visitor agrees).
+#
+'FriseurFabrik.Base:Content.InstagramPosts':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Instagram-Beiträge'
+    icon: 'camera-retro'
+    position: 66
+    help:
+      message: 'Zeigt ausgewählte Instagram-Beiträge. Fügen Sie im Strukturbaum Beiträge hinzu und tragen Sie jeweils den Link zum Beitrag ein.'
+  childNodes:
+    items:
+      type: 'FriseurFabrik.Base:Collection.InstagramPosts'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Aktuelles von Instagram'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.InstagramPost':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  label: "${Neos.Node.labelForNode(node).properties('caption', 'postUrl')}"
+  ui:
+    label: 'Instagram-Beitrag'
+    icon: 'camera'
+    inspector:
+      groups:
+        post:
+          label: 'Beitrag'
+          icon: 'camera-retro'
+  properties:
+    postUrl:
+      type: string
+      ui:
+        label: 'Link zum Beitrag'
+        reloadIfChanged: true
+        help:
+          message: 'Auf Instagram beim Beitrag "…" → "Link kopieren" und hier einfügen, z.B. https://www.instagram.com/p/ABC123/'
+        inspector:
+          group: post
+          editorOptions:
+            placeholder: 'https://www.instagram.com/p/…'
+      validation:
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^(https:\/\/(www\.)?instagram\.com\/(p|reel|tv)\/[A-Za-z0-9_-]+\/?(\?.*)?)?$/'
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Vorschaubild (optional)'
+        reloadIfChanged: true
+        help:
+          message: 'Wird gezeigt, bis der Beitrag von Instagram geladen wird. Ohne Bild erscheint ein Platzhalter.'
+        inspector:
+          group: post
+    caption:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kurzer Text zum Beitrag (optional)'
+            autoparagraph: false
+            formatting: {}

@@ -1,0 +1,165 @@
+##
+# Image elements for salons: before/after comparison, slider and image cards (e.g. for services)
+#
+'FriseurFabrik.Base:Content.BeforeAfter':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Vorher / Nachher'
+    icon: 'adjust'
+    position: 31
+    help:
+      message: 'Zwei Fotos zum Vergleichen – Besucher:innen schieben den Regler hin und her. Am besten gleich große Fotos aus derselben Perspektive.'
+    inspector:
+      groups:
+        images:
+          label: 'Fotos'
+          icon: 'images'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift (optional), z.B. Balayage in Karamell'
+            autoparagraph: false
+            formatting: {}
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Beschreibung (optional)'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+    beforeImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Foto vorher'
+        reloadIfChanged: true
+        inspector:
+          group: images
+    afterImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Foto nachher'
+        reloadIfChanged: true
+        inspector:
+          group: images
+
+'FriseurFabrik.Base:Content.Slider':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Bilder-Slider'
+    icon: 'images'
+    position: 32
+    help:
+      message: 'Fotos zum Durchblättern. Die Bildunterschrift kommt aus dem Feld "Beschreibung" in der Medienverwaltung.'
+    inspector:
+      groups:
+        images:
+          label: 'Fotos'
+          icon: 'images'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift (optional)'
+            autoparagraph: false
+            formatting: {}
+    images:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        label: 'Fotos'
+        reloadIfChanged: true
+        inspector:
+          group: images
+          editorOptions:
+            constraints:
+              mediaTypes: ['image/*']
+
+'FriseurFabrik.Base:Content.ImageCards':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Bild-Kacheln'
+    icon: 'th-large'
+    position: 33
+    help:
+      message: 'Kacheln mit Foto, Titel und Text – z.B. für Damen, Herren, Braut oder einzelne Leistungen.'
+  childNodes:
+    items:
+      type: 'FriseurFabrik.Base:Collection.ImageCards'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift (optional)'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.ImageCard':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  label: "${Neos.Node.labelForNode(node).properties('title')}"
+  ui:
+    label: 'Bild-Kachel'
+    icon: 'square'
+    inspector:
+      groups:
+        card:
+          label: 'Kachel'
+          icon: 'square'
+  properties:
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Foto'
+        reloadIfChanged: true
+        inspector:
+          group: card
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Titel'
+            autoparagraph: false
+            formatting: {}
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kurzer Text (optional)'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+    link:
+      type: string
+      ui:
+        label: 'Link (optional)'
+        reloadIfChanged: true
+        inspector:
+          group: card
+          editor: 'Neos.Neos/Inspector/Editors/LinkEditor'

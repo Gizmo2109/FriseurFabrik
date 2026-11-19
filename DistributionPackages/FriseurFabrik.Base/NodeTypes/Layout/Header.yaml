@@ -1,0 +1,77 @@
+##
+# Header and footer are tethered nodes of the site node: edited once, shown on every page.
+# Which pages are linked is decided here (menu items), never by the pages themselves.
+#
+'FriseurFabrik.Base:Content.SiteHeader':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  label: "${'Kopfbereich (alle Seiten)'}"
+  ui:
+    label: 'Kopfbereich'
+    icon: 'window-maximize'
+    help:
+      message: 'Erscheint auf allen Seiten. Menüpunkte: im Strukturbaum der Startseite unter "Kopfbereich → Menü" hinzufügen oder einen Menüpunkt in der Vorschau anklicken. Wichtig: Änderungen am Kopfbereich auf der Startseite veröffentlichen – oder auf jeder Seite über den Pfeil neben "Veröffentlichen" → "Alles veröffentlichen".'
+    inspector:
+      groups:
+        header:
+          label: 'Kopfbereich'
+          icon: 'window-maximize'
+  childNodes:
+    menu:
+      type: 'FriseurFabrik.Base:Collection.Menu'
+  properties:
+    showPhone:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Telefonnummer anzeigen'
+        reloadIfChanged: true
+        inspector:
+          group: header
+    showBookingButton:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Termin-Button anzeigen'
+        reloadIfChanged: true
+        inspector:
+          group: header
+
+'FriseurFabrik.Base:Content.MenuItem':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  label: "${Neos.Node.labelForNode(node).properties('label')}"
+  ui:
+    label: 'Menüpunkt'
+    icon: 'link'
+    help:
+      message: 'Ein Link im Menü oder in einer Linkliste. Ziel kann eine Seite der Website, eine Datei oder eine externe Adresse sein. Änderungen über "Alles veröffentlichen" (Pfeil neben "Veröffentlichen") live schalten.'
+    inspector:
+      groups:
+        link:
+          label: 'Menüpunkt'
+          icon: 'link'
+  properties:
+    label:
+      type: string
+      ui:
+        label: 'Beschriftung'
+        reloadIfChanged: true
+        inspector:
+          group: link
+          editorOptions:
+            placeholder: 'z.B. Preise'
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': []
+    link:
+      type: string
+      ui:
+        label: 'Ziel'
+        reloadIfChanged: true
+        help:
+          message: 'Seite auswählen oder Adresse eingeben. Mit #termin am Ende springt der Link direkt zum Terminformular.'
+        inspector:
+          group: link
+          editor: 'Neos.Neos/Inspector/Editors/LinkEditor'
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': []

@@ -1,0 +1,12 @@
+from "./Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component SocialLink {
+  icon: IconName
+  label: string
+  href: string
+
+  render <a class="social-link" href={href} target="_blank" rel="noopener" aria-label={label} title={label}>
+    <Icon name={icon} />
+  </a>
+}

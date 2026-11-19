@@ -1,0 +1,77 @@
+# Billi's Friseure – Altstadt. Alte Website: Flash-artiges CMS (#!/pageSplash), kein mobiles Layout, Inhalte nur über Unterseiten erreichbar, keine Preise.
+rating:
+  score: 3
+  previousWebsite: 'https://www.billis-friseure.de'
+  reason: 'Kein responsives Layout (Desktop-Seite wird auf dem Handy verkleinert), veraltetes Splash-CMS, keine Preise, kaum Text'
+nodeName: billis
+domains: ['billis.localhost']
+site:
+  salonName: 'Billi’s Friseure'
+  tagline: 'Modern. Stylisch. Rockig.'
+  ownerName: 'Billi Aksoy'
+  street: 'Karmelitenstraße 40'
+  postalCode: '97070'
+  city: 'Würzburg'
+  district: 'Altstadt'
+  phone: '0931 32919009'
+  email: 'info@billis-friseure.de'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Karmelitenstra%C3%9Fe+40%2C+97070+W%C3%BCrzburg'
+  hoursTuesday: '08:30 – 18:00'
+  hoursWednesday: '08:30 – 18:00'
+  hoursThursday: '09:00 – 19:00'
+  hoursFriday: '08:30 – 18:00'
+  hoursSaturday: '08:00 – 13:00'
+  hoursNote: 'Terminvereinbarung unter 0931 32919009.'
+  theme: 'barber'
+  accentColor: '#e0662f'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: barber-chairs
+  about: comb-cut
+  prices: scissors-set
+  salon: interior-long
+  story: styling
+  gallery: [short-platinum, interior-plants, beard-trim, hairflip-city, coloring-wet, man-curly, lounge, platinum]
+home:
+  kicker: 'Seit fast 30 Jahren in Würzburg'
+  headline: 'Style hat man – oder <em>man holt ihn sich</em>'
+  text: 'Klassisch, aber modern. Rockig, aber typgerecht. Individuelle Haarschnitte von Billi und seinem Team.'
+  about:
+    kicker: 'Billi’s Friseure'
+    title: 'Der Laden könnte auch in New York, Paris oder Berlin sein'
+    text: '<p>Schon die Gestaltung unserer Räume setzt Trends: Die großen Spiegel geben Raum für Kreativität und Ideen, ein Hauch Nostalgie gibt dem modernen Design das besondere Etwas.</p><p>Das spiegelt sich auch in unseren Haarschnitten wider – ganz individuell auf Sie zugeschnitten. Egal ob elegant oder rockig, streng oder flippig: Billi und seine Friseure finden für jeden Kunden den perfekten Haarschnitt.</p>'
+  galleryTitle: 'Styles & Salon'
+  pricesTeaser: 'Schnitt, Farbe, Styling – wir beraten Sie gerne persönlich zu Ihrem Wunschlook.'
+  ctaTitle: 'Wenn man Billi’s verlässt, hat man ihn.'
+  ctaText: 'Den Style. Fragen Sie jetzt Ihren Termin an.'
+features:
+  - { icon: scissors, title: 'Individuelle Schnitte', text: 'Klassisch, modern oder rockig – immer typgerecht.' }
+  - { icon: star, title: 'Fast 30 Jahre Erfahrung', text: 'Billi Aksoy setzt seit fast drei Jahrzehnten Haartrends in Würzburg.' }
+  - { icon: color, title: 'Farbe & Styling', text: 'Von dezent bis auffällig – wir finden Ihren Look.' }
+prices:
+  headline: 'Leistungen'
+  intro: 'Jeder Look ist individuell – deshalb nennen wir Ihnen Ihren Preis gerne nach einer kurzen Beratung, telefonisch oder im Salon.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Waschen, Schneiden, Styling', 'auf Anfrage']
+        - ['Föhnen & Styling', 'auf Anfrage']
+        - ['Coloration', 'auf Anfrage']
+        - ['Strähnen', 'auf Anfrage']
+    - title: 'Herren'
+      items:
+        - ['Waschen, Schneiden, Styling', 'auf Anfrage']
+        - ['Maschinenschnitt', 'auf Anfrage']
+  note: 'Ihren individuellen Preis nennen wir Ihnen gerne telefonisch unter 0931 32919009.'
+team:
+  title: 'Der Chef'
+  members:
+    - { name: 'Billi Aksoy', role: 'Friseurmeister & Inhaber', bio: 'Setzt seit fast 30 Jahren Haartrends in Würzburg.' }
+salonPage:
+  headline: 'Modern. Stylisch. Rockig.'
+  intro: 'Ein Salon, der schon beim Reinkommen Lust auf Veränderung macht.'
+  kicker: 'Raum für Kreativität'
+  title: 'Große Spiegel, große Ideen'
+  text: '<p>Die großen Spiegel sind nicht nur funktional, sie geben auch Raum. Raum für Kreativität. Raum für Ideen. Der ganze Laden sprüht vor Inspiration.</p><p>Bei Billi’s entstehen ganz individuelle, auf Sie zugeschnittene Haarschnitte – klassisch, aber modern; rockig, aber typgerecht.</p>'
+faq:
+  - ['Haben Sie montags geöffnet?', '<p>Nein, montags ist unser Salon geschlossen. Dienstag bis Samstag sind wir für Sie da.</p>']

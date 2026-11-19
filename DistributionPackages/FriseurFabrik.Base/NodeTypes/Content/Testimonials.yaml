@@ -1,0 +1,52 @@
+'FriseurFabrik.Base:Content.Testimonials':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Kundenstimmen'
+    icon: 'comment'
+    position: 60
+    help:
+      message: 'Bitte nur echte Bewertungen mit Einverständnis der Kund:innen verwenden.'
+  childNodes:
+    items:
+      type: 'FriseurFabrik.Base:Collection.Testimonials'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Das sagen unsere Kund:innen'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.Testimonial':
+  label: "${Neos.Node.labelForNode(node).properties('author')}"
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  ui:
+    label: 'Kundenstimme'
+    icon: 'quote-left'
+  properties:
+    quote:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Zitat'
+            autoparagraph: false
+            formatting:
+              em: true
+    author:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Name, Quelle (z.B. Google)'
+            autoparagraph: false
+            formatting: {}

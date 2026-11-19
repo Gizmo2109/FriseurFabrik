@@ -1,0 +1,103 @@
+# AX Friseure – Altstadt (Martin-Passage). Alte Website: Typo3-Layout um 2012, winzige Serifenschrift, "Facebook Gefällt mir"-Hinweis,
+# Termine ausschließlich telefonisch.
+rating:
+  score: 4
+  previousWebsite: 'https://www.ax-friseure.de'
+  reason: 'Gestalterisch veraltet (schwarzer Rahmen, sehr kleine Schrift), wenig Bilder, keine Online-Terminanfrage; Preise und Öffnungszeiten aber vorhanden'
+nodeName: axfriseure
+domains: ['ax-friseure.localhost']
+site:
+  salonName: 'AX Friseure'
+  tagline: 'Haare machen Leute'
+  ownerName: 'Michael Ax'
+  street: 'Herrnstraße 3 (Ecke Martin-Passage)'
+  postalCode: '97070'
+  city: 'Würzburg'
+  district: 'Altstadt'
+  phone: '0931 55570'
+  email: 'info@ax-friseure.de'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Herrnstra%C3%9Fe+3%2C+97070+W%C3%BCrzburg'
+  facebookUrl: 'https://www.facebook.com/AxFriseure'
+  hoursTuesday: '08:30 – 18:00'
+  hoursWednesday: '08:30 – 18:00'
+  hoursThursday: '08:30 – 18:00'
+  hoursFriday: '08:30 – 18:00'
+  hoursSaturday: '08:00 – 14:00'
+  hoursNote: 'Montag Ruhetag.'
+  theme: 'classic'
+  accentColor: '#2f2f2f'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: short-platinum
+  about: interior-long
+  prices: scissors-set
+  salon: lounge
+  story: updo
+  gallery: [platinum, styling, updo, coloring-wet, long-brunette, interior-plants, braid, color-brush]
+home:
+  kicker: 'AX Friseure · Würzburg'
+  headline: 'Haare machen <em>Leute</em>'
+  text: 'Trends, Frisurenmode und brillante Farben – mit Liebe zum Detail und ganz nach Ihren Wünschen.'
+  about:
+    kicker: 'Unsere Philosophie'
+    title: 'Der Kunde steht im Mittelpunkt'
+    text: '<p>In unserem Friseurgeschäft werden Trends, News und aktuelle Frisurenmode kreiert. Im Mittelpunkt stehen Sie – mit Ihren persönlichen Wünschen nach individueller Betreuung, Originalität, Schönheit und gepflegten Haaren.</p><p>Die Liebe zum Detail macht das Besondere, das Exklusive und damit das Persönliche aus. Ihre Zufriedenheit ist unser höchstes Ziel.</p>'
+  galleryTitle: 'Entdecken Sie Individualität'
+  pricesTeaser: 'Alle Spezialshampoos und Stylingprodukte sind bei uns im Preis enthalten.'
+features:
+  - { icon: coffee, title: 'Zeit zum Genießen', text: 'Eine Tasse Kaffee, Espresso oder Tee, während wir uns um Sie kümmern.' }
+  - { icon: ring, title: 'Hochzeit', text: 'Brautfrisuren und Styling für Ihren großen Tag – auf Wunsch auch mit Outdoor-Service.' }
+  - { icon: star, title: 'Haarverlängerung', text: 'Mehr Länge und Fülle – Haarverlängerung und -verdichtung nach Angebot.' }
+  - { icon: color, title: 'Reflexions-Techniken', text: 'Strähnen, Mehrfarb- und Paintingtechnik für brillante Farben.' }
+prices:
+  headline: 'Unsere Preise'
+  intro: 'Alle Spezialshampoos und Stylingprodukte sind im Preis enthalten. Preise bei Farbbehandlungen richten sich nach Produktverbrauch und Zeitaufwand.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Shampoonieren, Schneiden & Styling – Kurzhaar', 'ab 66,00 €']
+        - ['Shampoonieren, Schneiden & Styling – Halblang', 'ab 75,00 €']
+        - ['Shampoonieren, Schneiden & Styling – Langhaar', 'ab 80,00 €']
+        - ['Cut and go – Kurzhaar', 'ab 45,00 €', 'Waschen, Schneiden ohne Föhnen']
+        - ['Cut and go – Halblang und Langhaar', 'ab 49,00 €']
+        - ['Shampoonieren und Stylen', 'ab 35,00 €']
+        - ['Steckfrisur', 'ab 50,00 €', 'nach Aufwand']
+    - title: 'Herren'
+      items:
+        - ['Shampoonieren, Schneiden & Styling', '42,00 €']
+        - ['Bartpflege', 'ab 8,00 €']
+    - title: 'Farbe & Pflege'
+      items:
+        - ['Ansatzcoloration', 'ab 58,00 €']
+        - ['Reflexions-Strähnen', 'ab 80,00 €']
+        - ['Reflexions-Mehrfarbtechnik', 'ab 85,00 €']
+        - ['Reflexions-Paintingtechnik', 'ab 95,00 €']
+        - ['Pflanzenhaarfarbe', 'ab 63,00 €']
+        - ['Tönen', 'ab 58,00 €']
+        - ['True Grey Weißhaar-Treatment', 'ab 40,00 €']
+        - ['Volumenwelle', 'ab 70,00 €']
+        - ['Intensivpflege inkl. Kopfmassage', 'ab 13,00 €']
+        - ['Haarverlängerung / Haarverdichtung', 'nach Angebot']
+    - title: 'Kinder & Kosmetik'
+      note: 'Ab 14 Jahren Vollpreis.'
+      items:
+        - ['Kinder: Shampoonieren, Schneiden & Styling', 'ab 28,00 €']
+        - ['Kinder: langes Haar', 'ab 35,00 €']
+        - ['Wimpern färben', '17,00 €']
+        - ['Augenbrauen färben', '13,00 €']
+        - ['Augenbrauen zupfen', '17,00 €']
+  note: 'Alle Preise in Euro inkl. der gesetzlichen Mehrwertsteuer. Gerne beraten wir Sie für Ihr persönliches Preisangebot. Stand April 2026.'
+team:
+  title: 'Friseur/in mit Leib und Seele'
+  intro: 'Freude an der Arbeit, Freundschaft und gegenseitiges Vertrauen verbinden unser Team.'
+  members:
+    - { name: 'Michael Ax', role: 'Inhaber' }
+salonPage:
+  headline: 'Hochwertig und elegant'
+  intro: 'Mit viel Liebe zum Detail gestaltet – damit Sie sich wohlfühlen.'
+  kicker: 'Wohlfühlerlebnis'
+  title: 'Nehmen Sie Platz und entspannen Sie sich'
+  text: '<p>In unserem modernen und stilvollen Ambiente tauchen Sie ein in die Welt der kreativen Frisuren, meisterhaften Schnitte und brillanten Farben.</p><p>Haar ist das schönste Accessoire – deshalb schenken wir Ihrem Haar unsere ganze Aufmerksamkeit. Genießen Sie dabei eine Tasse Kaffee, einen Espresso oder Tee.</p>'
+faq:
+  - ['Wo finde ich Sie?', '<p>In der Herrnstraße 3, an der Ecke zur Martin-Passage, mitten in der Würzburger Altstadt.</p>']
+  - ['Bieten Sie Brautfrisuren an?', '<p>Ja – Hochzeitsfrisuren gehören zu unseren Spezialitäten, auf Wunsch auch mit Outdoor-Service. Sprechen Sie uns an!</p>']

@@ -1,0 +1,14 @@
+export component AgendaItem {
+  time: string
+  name: string
+  service: string
+  stylist: string
+  site: string
+  href: string
+
+  render <a class="ff-agenda__item" href={href}>
+    <span class="ff-agenda__time">{time}</span>
+    <span class="ff-agenda__main"><strong>{name}</strong><span class="ff-muted">{service}</span></span>
+    <span class="ff-agenda__meta">{stylist}<br/><span class="ff-muted">{site}</span></span>
+  </a>
+}

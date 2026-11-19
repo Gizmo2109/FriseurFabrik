@@ -1,0 +1,9 @@
+export component Faq {
+  title: slot
+  items: slot
+
+  render <div class="faq">
+    <h2 class="section-head__title">{title}</h2>
+    {items}
+  </div>
+}

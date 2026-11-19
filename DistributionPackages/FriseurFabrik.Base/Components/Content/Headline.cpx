@@ -1,0 +1,11 @@
+export component Headline {
+  kicker: slot
+  title: slot
+  intro: slot
+
+  render <header class="section-head">
+    <p class="kicker">{kicker}</p>
+    <h2 class="section-head__title">{title}</h2>
+    <div class="section-head__intro">{intro}</div>
+  </header>
+}

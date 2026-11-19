@@ -1,0 +1,69 @@
+# Haarliebe by Simone – Textorstraße. Bisherige "Website" war eine Google-Business-Site (business.site), die Google eingestellt hat (404).
+# Daten aus Gelbe Seiten. Keine Preise/Team bekannt.
+rating:
+  score: 1
+  previousWebsite: 'https://haarliebe-by-simone.business.site'
+  reason: 'Google-Business-Website wurde von Google abgeschaltet (404) – keine Website vorhanden'
+nodeName: haarliebe
+domains: ['haarliebe.localhost']
+site:
+  salonName: 'Haarliebe by Simone'
+  tagline: 'Friseur mit Herz'
+  street: 'Textorstraße 10'
+  postalCode: '97070'
+  city: 'Würzburg'
+  district: 'Altstadt'
+  phone: '0931 97096708'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Textorstra%C3%9Fe+10%2C+97070+W%C3%BCrzburg'
+  hoursTuesday: '08:00 – 18:00'
+  hoursWednesday: '08:00 – 18:00'
+  hoursThursday: '08:00 – 18:00'
+  hoursFriday: '08:00 – 18:00'
+  hoursSaturday: '08:00 – 14:00'
+  theme: 'pastell'
+  accentColor: '#b8607a'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: curly
+  about: blowdry
+  prices: color-brush
+  salon: beauty-room
+  story: braid
+  gallery: [pastel, updo, ombre, bob, wind, short-platinum, coloring-wet, long-brunette]
+home:
+  kicker: 'Haarliebe · Textorstraße 10'
+  headline: 'Mit Liebe <em>zum Haar</em>'
+  text: 'Ihr Friseur in der Würzburger Altstadt – mit persönlicher Beratung und viel Gefühl für Ihren Typ.'
+  about:
+    kicker: 'Willkommen bei Haarliebe'
+    title: 'Haare sind Herzenssache'
+    text: '<p>Bei Haarliebe by Simone steht Ihr Wohlfühlen an erster Stelle. Wir nehmen uns Zeit für Ihre Wünsche und finden gemeinsam Schnitt, Farbe und Styling, die zu Ihnen passen.</p>'
+  galleryTitle: 'Inspiration'
+  pricesTeaser: 'Unsere Leistungen im Überblick – Ihren Preis nennen wir Ihnen gerne persönlich.'
+features:
+  - { icon: heart, title: 'Mit Herz', text: 'Persönliche Beratung in entspannter Atmosphäre.' }
+  - { icon: color, title: 'Farbe & Pflege', text: 'Für glänzendes, gesundes Haar.' }
+  - { icon: calendar, title: 'Ab 8 Uhr geöffnet', text: 'Dienstag bis Samstag für Sie da.' }
+prices:
+  headline: 'Leistungen'
+  intro: 'Ihren individuellen Preis nennen wir Ihnen gerne telefonisch unter 0931 97096708 oder direkt im Salon.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Waschen, Schneiden, Föhnen', 'auf Anfrage']
+        - ['Föhnen & Styling', 'auf Anfrage']
+        - ['Coloration', 'auf Anfrage']
+        - ['Strähnen', 'auf Anfrage']
+        - ['Hochsteckfrisur', 'auf Anfrage']
+    - title: 'Herren'
+      items:
+        - ['Waschen, Schneiden, Styling', 'auf Anfrage']
+team:
+  title: 'Ihre Friseurin'
+  members:
+    - { name: 'Simone', role: 'Inhaberin' }
+salonPage:
+  headline: 'Textorstraße 10'
+  intro: 'Mitten in der Würzburger Altstadt.'
+  title: 'Wir freuen uns auf Sie'
+  text: '<p>Kommen Sie vorbei oder fragen Sie Ihren Wunschtermin bequem online an.</p>'

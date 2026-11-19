@@ -1,0 +1,9 @@
+export component FaqItem {
+  question: slot
+  answer: slot
+
+  render <details class="faq__item">
+    <summary class="faq__question">{question}</summary>
+    <div class="faq__answer prose">{answer}</div>
+  </details>
+}

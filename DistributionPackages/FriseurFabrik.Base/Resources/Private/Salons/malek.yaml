@@ -1,0 +1,65 @@
+# Friseursalon Malek – Theaterstraße. Domain frisurenmode-malek.de steht zum Verkauf – keine Website mehr.
+# Daten aus Gelbe Seiten. Keine Preise/Team bekannt.
+rating:
+  score: 1
+  previousWebsite: 'https://www.frisurenmode-malek.de'
+  reason: 'Domain wird zum Verkauf angeboten ("may be for sale") – keine Website vorhanden'
+nodeName: malek
+domains: ['malek.localhost']
+site:
+  salonName: 'Friseursalon Malek'
+  tagline: 'Frisurenmode in der Theaterstraße'
+  street: 'Theaterstraße 18'
+  postalCode: '97070'
+  city: 'Würzburg'
+  district: 'Altstadt'
+  phone: '0931 54115'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Theaterstra%C3%9Fe+18%2C+97070+W%C3%BCrzburg'
+  hoursTuesday: '08:00 – 18:00'
+  hoursWednesday: '08:00 – 18:00'
+  hoursThursday: '08:00 – 18:00'
+  hoursFriday: '08:00 – 18:00'
+  hoursSaturday: '08:00 – 14:00'
+  theme: 'modern'
+  accentColor: '#8a5a3c'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: copper
+  about: styling
+  prices: color-bowl
+  salon: lounge
+  story: cutting
+  gallery: [long-brunette, comb-cut, updo, coloring-wet, curly, beard-trim, platinum, interior-plants]
+home:
+  kicker: 'Friseursalon in der Würzburger Altstadt'
+  headline: 'Frisurenmode, <em>die zu Ihnen passt</em>'
+  text: 'Persönliche Beratung, sauberes Handwerk und Zeit für Sie – in der Theaterstraße 18.'
+  about:
+    kicker: 'Willkommen'
+    title: 'Schön, dass Sie da sind'
+    text: '<p>In unserem Salon in der Theaterstraße nehmen wir uns Zeit für Ihre Wünsche. Ob frischer Schnitt, neue Farbe oder Styling für einen besonderen Anlass – wir beraten Sie gerne.</p>'
+  galleryTitle: 'Inspiration'
+  pricesTeaser: 'Unsere Leistungen im Überblick – Ihren Preis nennen wir Ihnen gerne persönlich.'
+features:
+  - { icon: heart, title: 'Persönliche Beratung', text: 'Wir hören zu und finden den Look, der zu Ihnen passt.' }
+  - { icon: scissors, title: 'Damen & Herren', text: 'Schnitt, Farbe und Styling für alle.' }
+  - { icon: calendar, title: 'Ab 8 Uhr für Sie da', text: 'Dienstag bis Samstag – früh am Morgen.' }
+prices:
+  headline: 'Leistungen'
+  intro: 'Ihren individuellen Preis nennen wir Ihnen gerne telefonisch unter 0931 54115 oder direkt im Salon.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Waschen, Schneiden, Föhnen', 'auf Anfrage']
+        - ['Föhnen & Styling', 'auf Anfrage']
+        - ['Coloration', 'auf Anfrage']
+        - ['Strähnen', 'auf Anfrage']
+    - title: 'Herren'
+      items:
+        - ['Waschen, Schneiden, Styling', 'auf Anfrage']
+        - ['Bart', 'auf Anfrage']
+salonPage:
+  headline: 'Theaterstraße 18'
+  intro: 'Mitten in der Würzburger Altstadt.'
+  title: 'Wir freuen uns auf Sie'
+  text: '<p>Kommen Sie vorbei oder fragen Sie Ihren Wunschtermin bequem online an.</p>'

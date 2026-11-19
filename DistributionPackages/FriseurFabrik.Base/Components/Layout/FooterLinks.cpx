@@ -1,0 +1,9 @@
+export component FooterLinks {
+  title: slot
+  links: slot
+
+  render <div class="footer-col">
+    <p class="site-footer__heading">{title}</p>
+    {links}
+  </div>
+}

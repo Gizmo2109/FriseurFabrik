@@ -1,0 +1,9 @@
+export component Features {
+  title: slot
+  items: slot
+
+  render <div class="features">
+    <h2 class="section-head__title section-head__title--center">{title}</h2>
+    {items}
+  </div>
+}

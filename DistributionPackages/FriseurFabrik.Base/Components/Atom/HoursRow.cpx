@@ -1,0 +1,11 @@
+export component HoursRow {
+  day: string
+  time: string
+  closed: boolean
+  today: boolean
+
+  render <div class={["hours__row", closed ? "is-closed" : null, today ? "is-today" : null]}>
+    <dt>{day}</dt>
+    <dd>{time}</dd>
+  </div>
+}

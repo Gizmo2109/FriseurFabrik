@@ -1,0 +1,24 @@
+from "./Option.cpx" import { Option }
+
+export component FilterForm {
+  action: string
+  view: string
+  query: string
+  sites: list<Option>
+  showSites: boolean
+  newHref: string
+
+  render <form class="ff-filter" method="get" action={action}>
+    <input type="hidden" name="moduleArguments[@action]" value="index"/>
+    <input type="hidden" name="moduleArguments[view]" value={view}/>
+    {showSites
+      ? <select name="moduleArguments[site]" aria-label="Salon" onchange="this.form.submit()">
+          <option value="">Alle Salons</option>
+          {sites}
+        </select>
+      : null}
+    <input type="search" name="moduleArguments[q]" value={query} placeholder="Name, Telefon, E-Mail" aria-label="Suchen"/>
+    <button class="neos-button" type="submit">Suchen</button>
+    <a class="neos-button neos-button-primary" href={newHref}>+ Termin eintragen</a>
+  </form>
+}

@@ -1,0 +1,94 @@
+# Dauer – Mode im Haar. Alte Website: Boxed-Layout auf Struktur-Hintergrund, kleine Bilder, Preise als Fließtext, Google-Maps nur mit Klick.
+rating:
+  score: 4
+  previousWebsite: 'https://dauer-mode-im-haar.de'
+  reason: 'Veraltetes Boxed-Layout mit Struktur-Hintergrund, kleine Bilder, Preise und Öffnungszeiten schwer zu finden; immerhin mobil lesbar'
+nodeName: dauer
+domains: ['dauer.localhost']
+site:
+  salonName: 'DAUER – Mode im Haar'
+  tagline: 'Ihr Friseur in Würzburg'
+  ownerName: 'Harald Dauer'
+  street: 'Goethestraße 1'
+  postalCode: '97072'
+  city: 'Würzburg'
+  phone: '0931 18880'
+  email: 'harald.dauer@t-online.de'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Goethestra%C3%9Fe+1%2C+97072+W%C3%BCrzburg'
+  hoursTuesday: '08:00 – 18:00'
+  hoursWednesday: '08:00 – 18:00'
+  hoursThursday: '08:00 – 18:00'
+  hoursFriday: '08:00 – 18:00'
+  hoursSaturday: '08:00 – 14:00'
+  hoursNote: 'Montag geschlossen.'
+  theme: 'natur'
+  accentColor: '#8a6a3c'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: long-brunette
+  about: comb-cut
+  prices: scissors
+  salon: interior-plants
+  story: coloring-wet
+  gallery: [braid, color-bowl, curly, styling, copper, updo, blowdry, bob]
+home:
+  kicker: 'Mode im Haar · Goethestraße 1'
+  headline: 'Fachkundig beraten, <em>gut aufgehoben</em>'
+  text: 'Jahrelange Erfahrung, Können auf hohem Niveau und Zeit für Ihre Wünsche – in gepflegter, angenehmer Atmosphäre.'
+  about:
+    kicker: 'Unsere Philosophie'
+    title: 'Ihre Zufriedenheit steht an erster Stelle'
+    text: '<p>In gepflegter, angenehmer Atmosphäre sollen Sie sich gut aufgehoben und vor allem fachkundig beraten fühlen. Meine jahrelange Berufserfahrung und mein Können setze ich ein, um Sie mit Ideen und Vorschlägen zu beraten.</p><p>Gerne gehe ich dabei auf Ihre individuellen Wünsche ein. Ich nehme mir Zeit für Sie.</p><p><em>Ihr Harald Dauer</em></p>'
+  galleryTitle: 'Schnitt, Farbe & Pflege'
+  pricesTeaser: 'Mittwochs und freitags 20 % Preisvorteil für Schüler und Studenten.'
+features:
+  - { icon: star, title: '20 % für Schüler & Studenten', text: 'Jeden Mittwoch und Freitag von 8 bis 14 Uhr.' }
+  - { icon: leaf, title: 'Pflanzenhaarfarbe', text: 'Natürliche Coloration mit EOS-Pflanzenfarben.' }
+  - { icon: color, title: 'Farbe & Strähnen', text: 'Koleston Perfect, Illumina Color und klassische Strähnentechnik.' }
+  - { icon: heart, title: 'Kosmetik', text: 'Augenbrauen und Wimpern – das Tüpfelchen auf dem i.' }
+prices:
+  headline: 'Unsere Leistungen'
+  intro: '20 % Preisvorteil für Schüler und Studenten – jeden Mittwoch und Freitag von 8:00 bis 14:00 Uhr.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Waschen, Schneiden, Föhnen', 'ab 25,00 €']
+        - ['Haarschnitt', 'ab 47,00 €']
+        - ['Farbe (Koleston Perfect)', '55,00 €']
+        - ['Illumina Color', '55,00 €']
+        - ['Pflanzenhaarfarbe (EOS)', 'ab 70,00 €']
+        - ['Classic Strähnentechnik', 'ab 150,00 €']
+        - ['Glossing Farbveredelung', 'ab 42,00 €']
+        - ['HFK Volumenwelle', 'ab 90,00 €']
+        - ['Cut and Co', 'ab 51,00 €']
+        - ['Cut and Color', '81,00 €']
+        - ['Sofortpflege', '7,00 €']
+        - ['Intensivpflege', '15,00 €']
+    - title: 'Herren & Kinder'
+      items:
+        - ['Waschen, Schneiden, Föhnen', '42,00 €']
+        - ['Bartschneiden', 'ab 10,00 €']
+        - ['Coloration', 'ab 40,00 €']
+        - ['Kinderhaarschnitt', '25,00 – 35,00 €']
+    - title: 'Kosmetik'
+      items:
+        - ['Augenbrauen waxen', '13,50 €']
+        - ['Augenbrauen zupfen', 'ab 10,00 €']
+        - ['Augenbrauen färben', '10,00 €']
+        - ['Wimpern färben', '14,50 €']
+team:
+  title: 'Unser Team'
+  members:
+    - { name: 'Harald Dauer', role: 'Inhaber' }
+    - { name: 'Gabi Gobel' }
+    - { name: 'Nadine Kollmus' }
+salonPage:
+  headline: 'Gepflegt, angenehm, persönlich'
+  intro: 'Ein Salon, in dem Sie sich gut aufgehoben fühlen.'
+  kicker: 'Handwerk'
+  title: 'Eingetragen in der Handwerksrolle Würzburg'
+  text: '<p>Bei uns erwartet Sie solides Friseurhandwerk mit viel Erfahrung – von der klassischen Strähnentechnik über Pflanzenhaarfarben bis zur Volumenwelle.</p>'
+faq:
+  - ['Wann gilt der Schüler- und Studentenrabatt?', '<p>Jeden Mittwoch und Freitag von 8 bis 14 Uhr erhalten Schüler und Studenten 20 % Preisvorteil.</p>']
+legal:
+  vatId: 'Steuernummer 257/210/30302 (Finanzamt Würzburg)'

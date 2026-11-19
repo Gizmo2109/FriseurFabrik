@@ -1,0 +1,7 @@
+export component Option {
+  value: string
+  label: string
+  selected: boolean
+
+  render <option value={value} selected={selected}>{label}</option>
+}

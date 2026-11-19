@@ -1,0 +1,14 @@
+from "../Atom/SocialLink.cpx" import { SocialLink }
+
+export component FooterSocial {
+  title: slot
+  social: list<SocialLink>
+  ctaLabel?: string
+  ctaHref?: string
+
+  render <div class="footer-col">
+    <p class="site-footer__heading">{title}</p>
+    {social.count > 0 ? <div class="social">{social}</div> : null}
+    {ctaHref !== null ? <a class="btn btn--primary btn--small" href={ctaHref ?? ""}>{ctaLabel ?? ""}</a> : null}
+  </div>
+}

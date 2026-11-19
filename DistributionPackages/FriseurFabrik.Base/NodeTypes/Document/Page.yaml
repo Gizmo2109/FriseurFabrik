@@ -1,0 +1,10 @@
+'FriseurFabrik.Base:Document.Page':
+  superTypes:
+    'FriseurFabrik.Base:Document': true
+  ui:
+    label: 'Seite'
+    icon: 'file'
+    position: 10
+  childNodes:
+    main:
+      type: 'FriseurFabrik.Base:Collection.Main'

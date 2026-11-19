@@ -1,0 +1,153 @@
+'FriseurFabrik.Base:Content.SiteFooter':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  label: "${'Fußbereich (alle Seiten)'}"
+  ui:
+    label: 'Fußbereich'
+    icon: 'window-minimize'
+    help:
+      message: 'Erscheint auf allen Seiten. Spalten und rechtliche Links fügen Sie im Strukturbaum der Startseite unter "Fußbereich" hinzu. Wichtig: Änderungen auf der Startseite veröffentlichen – oder über den Pfeil neben "Veröffentlichen" → "Alles veröffentlichen".'
+  childNodes:
+    columns:
+      type: 'FriseurFabrik.Base:Collection.FooterColumns'
+    legal:
+      type: 'FriseurFabrik.Base:Collection.Menu'
+  properties:
+    copyright:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Copyright-Zeile (leer = © Jahr Salonname)'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.FooterAbout':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Constraint.Content.Footer': true
+  ui:
+    label: 'Footer: Über uns'
+    icon: 'info-circle'
+    position: 10
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift (leer = Salonname)'
+            autoparagraph: false
+            formatting: {}
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Kurzer Text über den Salon'
+            autoparagraph: true
+            formatting:
+              strong: true
+              em: true
+              a: true
+
+'FriseurFabrik.Base:Content.FooterContact':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Constraint.Content.Footer': true
+  ui:
+    label: 'Footer: Kontakt'
+    icon: 'map-marker'
+    position: 20
+    help:
+      message: 'Adresse, Telefon und E-Mail kommen aus der Startseite (Tab "Salon").'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Kontakt'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.FooterHours':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Constraint.Content.Footer': true
+  ui:
+    label: 'Footer: Öffnungszeiten'
+    icon: 'clock'
+    position: 30
+    help:
+      message: 'Die Zeiten werden in der Startseite (Tab "Salon") gepflegt.'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Öffnungszeiten'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.FooterLinks':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Constraint.Content.Footer': true
+  ui:
+    label: 'Footer: Linkliste'
+    icon: 'list'
+    position: 40
+  childNodes:
+    links:
+      type: 'FriseurFabrik.Base:Collection.Menu'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Links'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.FooterSocial':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Constraint.Content.Footer': true
+  ui:
+    label: 'Footer: Social Media & Termin'
+    icon: 'share-alt'
+    position: 50
+    help:
+      message: 'Die Profil-Links kommen aus der Startseite (Tab "Salon" → Social Media).'
+    inspector:
+      groups:
+        footer:
+          label: 'Footer-Spalte'
+          icon: 'share-alt'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Folgen Sie uns'
+            autoparagraph: false
+            formatting: {}
+    showBookingButton:
+      type: boolean
+      defaultValue: true
+      ui:
+        label: 'Termin-Button anzeigen'
+        reloadIfChanged: true
+        inspector:
+          group: footer

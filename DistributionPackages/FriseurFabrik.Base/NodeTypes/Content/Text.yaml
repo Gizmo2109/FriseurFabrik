@@ -1,0 +1,33 @@
+'FriseurFabrik.Base:Content.Text':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Text'
+    icon: 'align-left'
+    position: 20
+  properties:
+    text:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Text eingeben …'
+            autoparagraph: true
+            linking:
+              anchor: true
+              title: true
+              targetBlank: true
+            formatting:
+              strong: true
+              em: true
+              u: true
+              h2: true
+              h3: true
+              p: true
+              ul: true
+              ol: true
+              a: true
+              removeFormat: true

@@ -1,0 +1,13 @@
+export component Team {
+  title: slot
+  intro: slot
+  members: slot
+
+  render <div class="team">
+    <header class="section-head">
+      <h2 class="section-head__title">{title}</h2>
+      <div class="section-head__intro">{intro}</div>
+    </header>
+    {members}
+  </div>
+}

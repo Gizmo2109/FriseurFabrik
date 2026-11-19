@@ -1,0 +1,9 @@
+export component Testimonials {
+  title: slot
+  items: slot
+
+  render <div class="testimonials">
+    <h2 class="section-head__title section-head__title--center">{title}</h2>
+    {items}
+  </div>
+}

@@ -1,0 +1,12 @@
+from "../Data/Tone.cpx" import { Tone }
+
+export component Section {
+  tone: Tone
+  anchor?: string
+  modifier: string
+  content: slot
+
+  render <section class={["section", "section--{tone}", modifier]} id={anchor}>
+    <div class="container">{content}</div>
+  </section>
+}

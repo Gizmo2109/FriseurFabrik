@@ -1,0 +1,7 @@
+export component MailButton {
+  label: string
+  href: string
+  color: string
+
+  render <a href={href} style="display:inline-block;background:{color};color:#ffffff;text-decoration:none;padding:12px 22px;border-radius:6px;font-weight:bold;font-size:15px;margin:0 8px 8px 0;">{label}</a>
+}

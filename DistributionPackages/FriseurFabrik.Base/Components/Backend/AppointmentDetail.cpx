@@ -1,0 +1,43 @@
+from "../Atom/FactRow.cpx" import { FactRow }
+from "./HistoryEntry.cpx" import { HistoryEntry }
+
+export component AppointmentDetail {
+  backHref: string
+  name: string
+  statusLabel: string
+  statusClass: string
+  headline: string
+  facts: list<FactRow>
+  message?: string
+  actions: slot
+  contact: slot
+  note: slot
+  history: list<HistoryEntry>
+  danger: slot
+
+  render <div class="ff-detail">
+    <p><a class="ff-link" href={backHref}>← Zurück zur Übersicht</a></p>
+    <header class="ff-detail__head">
+      <h2 class="ff-detail__name">{name}</h2>
+      <span class={["ff-badge", statusClass]}>{statusLabel}</span>
+    </header>
+    <p class="ff-detail__headline">{headline}</p>
+    <div class="ff-detail__grid">
+      <div class="ff-detail__info">
+        <div class="ff-panel">
+          <h3 class="ff-panel__title">Anfrage</h3>
+          <dl class="ff-facts">{facts}</dl>
+          {message !== null ? <blockquote class="ff-message">{message ?? ""}</blockquote> : null}
+        </div>
+        {contact}
+        {note}
+        <div class="ff-panel">
+          <h3 class="ff-panel__title">Verlauf</h3>
+          <ul class="ff-history">{history}</ul>
+        </div>
+        {danger}
+      </div>
+      <div class="ff-detail__actions">{actions}</div>
+    </div>
+  </div>
+}

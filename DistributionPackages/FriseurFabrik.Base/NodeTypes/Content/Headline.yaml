@@ -1,0 +1,41 @@
+'FriseurFabrik.Base:Content.Headline':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Überschrift'
+    icon: 'heading'
+    position: 15
+  properties:
+    kicker:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überzeile (optional)'
+            autoparagraph: false
+            formatting: {}
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift'
+            autoparagraph: false
+            formatting:
+              em: true
+    intro:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Einleitung (optional)'
+            autoparagraph: false
+            formatting:
+              strong: true
+              em: true
+              a: true

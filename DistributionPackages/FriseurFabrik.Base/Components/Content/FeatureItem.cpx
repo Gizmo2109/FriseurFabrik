@@ -1,0 +1,14 @@
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component FeatureItem {
+  icon: IconName
+  title: slot
+  text: slot
+
+  render <div class="feature">
+    <span class="feature__icon"><Icon name={icon}/></span>
+    <h3 class="feature__title">{title}</h3>
+    <p class="feature__text">{text}</p>
+  </div>
+}

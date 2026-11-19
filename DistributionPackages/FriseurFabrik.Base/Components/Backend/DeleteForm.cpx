@@ -1,0 +1,11 @@
+from "./Csrf.cpx" import { Csrf }
+
+export component DeleteForm {
+  action: string
+  csrf: string
+
+  render <form class="ff-delete" method="post" action={action} data-confirm="Anfrage endgültig löschen? Das kann nicht rückgängig gemacht werden.">
+    <Csrf token={csrf}/>
+    <button class="neos-button neos-button-danger" type="submit">Anfrage löschen (DSGVO)</button>
+  </form>
+}

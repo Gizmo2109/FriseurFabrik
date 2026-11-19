@@ -1,0 +1,13 @@
+from "../Atom/HoursRow.cpx" import { HoursRow }
+
+export component OpeningHours {
+  title: slot
+  rows: list<HoursRow>
+  note?: string
+
+  render <div class="opening-hours">
+    <h2 class="section-head__title">{title}</h2>
+    <dl class="hours">{rows}</dl>
+    {note !== null ? <p class="opening-hours__note">{note ?? ""}</p> : null}
+  </div>
+}

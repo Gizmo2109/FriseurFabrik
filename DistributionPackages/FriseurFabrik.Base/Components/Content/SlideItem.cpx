@@ -1,0 +1,11 @@
+from "../Data/Img.cpx" import { Img }
+
+export component SlideItem {
+  image: Img
+  caption: string
+
+  render <figure class="slider__slide">
+    <img src={image.src} srcset={image.srcset} sizes="(min-width: 1200px) 1100px, 100vw" alt={image.alt} width={image.width} height={image.height} loading="lazy"/>
+    <figcaption>{caption}</figcaption>
+  </figure>
+}

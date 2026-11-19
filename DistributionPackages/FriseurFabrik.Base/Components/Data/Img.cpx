@@ -1,0 +1,7 @@
+export struct Img {
+  src: string
+  alt: string
+  srcset?: string
+  width?: integer
+  height?: integer
+}

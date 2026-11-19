@@ -1,0 +1,20 @@
+from "../Data/Img.cpx" import { Img }
+
+export component TextImage {
+  kicker: slot
+  title: slot
+  text: slot
+  image?: Img
+  imageLeft: boolean
+
+  render <div class={["text-image", imageLeft ? "text-image--left" : null]}>
+    <div class="text-image__media">
+      {image !== null ? <img src={image?.src ?? ""} srcset={image?.srcset} sizes="(min-width: 900px) 50vw, 100vw" alt={image?.alt ?? ""} width={image?.width} height={image?.height} loading="lazy"/> : <div class="media-placeholder"></div>}
+    </div>
+    <div class="text-image__body">
+      <p class="kicker">{kicker}</p>
+      <h2 class="text-image__title">{title}</h2>
+      <div class="prose">{text}</div>
+    </div>
+  </div>
+}

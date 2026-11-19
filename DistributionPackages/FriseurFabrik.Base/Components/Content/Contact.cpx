@@ -1,0 +1,40 @@
+from "../Atom/HoursRow.cpx" import { HoursRow }
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component Contact {
+  title: slot
+  text: slot
+  salonName: string
+  street?: string
+  zipCity?: string
+  phoneLabel?: string
+  phoneHref?: string
+  email?: string
+  emailHref?: string
+  whatsappHref?: string
+  mapsHref?: string
+  parkingInfo?: string
+  hours: list<HoursRow>
+  hoursNote?: string
+
+  render <div class="contact">
+    <div class="contact__info">
+      <h2 class="section-head__title">{title}</h2>
+      <div class="prose">{text}</div>
+      <ul class="contact-list contact-list--large">
+        <li><Icon name={IconName.PIN}/><span><strong>{salonName}</strong><br/>{street ?? ""}<br/>{zipCity ?? ""}</span></li>
+        {phoneHref !== null ? <li><Icon name={IconName.PHONE}/><a href={phoneHref ?? ""}>{phoneLabel ?? ""}</a></li> : null}
+        {emailHref !== null ? <li><Icon name={IconName.MAIL}/><a href={emailHref ?? ""}>{email ?? ""}</a></li> : null}
+        {whatsappHref !== null ? <li><Icon name={IconName.WHATSAPP}/><a href={whatsappHref ?? ""} target="_blank" rel="noopener">WhatsApp schreiben</a></li> : null}
+      </ul>
+      {parkingInfo !== null ? <p class="contact__parking"><Icon name={IconName.PARKING}/>{parkingInfo ?? ""}</p> : null}
+      {mapsHref !== null ? <a class="btn btn--secondary" href={mapsHref ?? ""} target="_blank" rel="noopener"><Icon name={IconName.PIN}/>Route planen</a> : null}
+    </div>
+    <div class="contact__hours">
+      <h3 class="contact__subtitle"><Icon name={IconName.CLOCK}/>Öffnungszeiten</h3>
+      <dl class="hours">{hours}</dl>
+      {hoursNote !== null ? <p class="opening-hours__note">{hoursNote ?? ""}</p> : null}
+    </div>
+  </div>
+}

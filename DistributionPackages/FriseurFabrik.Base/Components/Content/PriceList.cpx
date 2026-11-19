@@ -1,0 +1,11 @@
+export component PriceList {
+  title: slot
+  note: slot
+  items: slot
+
+  render <div class="price-list">
+    <h3 class="price-list__title">{title}</h3>
+    {items}
+    <p class="price-list__note">{note}</p>
+  </div>
+}

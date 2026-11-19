@@ -1,0 +1,8 @@
+from "./SelectOption.cpx" import { SelectOption }
+
+export component SelectGroup {
+  label: string
+  options: list<SelectOption>
+
+  render <optgroup label={label}>{options}</optgroup>
+}

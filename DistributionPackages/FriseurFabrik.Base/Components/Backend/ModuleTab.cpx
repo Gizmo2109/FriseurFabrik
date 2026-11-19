@@ -1,0 +1,8 @@
+export component ModuleTab {
+  label: string
+  href: string
+  count: string
+  active: boolean
+
+  render <a class={["ff-tab", active ? "is-active" : null]} href={href}>{label}{count !== "" ? <span class="ff-tab__count">{count}</span> : null}</a>
+}

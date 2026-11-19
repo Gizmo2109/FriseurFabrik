@@ -1,0 +1,53 @@
+'FriseurFabrik.Base:Content.Faq':
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+    'FriseurFabrik.Base:Mixin.Section': true
+    'FriseurFabrik.Base:Constraint.Content.Main': true
+  ui:
+    label: 'Häufige Fragen (FAQ)'
+    icon: 'question-circle'
+    position: 70
+  childNodes:
+    items:
+      type: 'FriseurFabrik.Base:Collection.FaqItems'
+  properties:
+    title:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Überschrift, z.B. Häufige Fragen'
+            autoparagraph: false
+            formatting: {}
+
+'FriseurFabrik.Base:Content.FaqItem':
+  label: "${Neos.Node.labelForNode(node).properties('question')}"
+  superTypes:
+    'FriseurFabrik.Base:Content': true
+  ui:
+    label: 'Frage & Antwort'
+    icon: 'question'
+  properties:
+    question:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Frage'
+            autoparagraph: false
+            formatting: {}
+    answer:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: 'Antwort'
+            autoparagraph: true
+            formatting:
+              strong: true
+              em: true
+              a: true
+              ul: true

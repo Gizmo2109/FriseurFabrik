@@ -1,0 +1,6 @@
+export enum Tone {
+  DEFAULT("default")
+  MUTED("muted")
+  BRAND("brand")
+  DARK("dark")
+}

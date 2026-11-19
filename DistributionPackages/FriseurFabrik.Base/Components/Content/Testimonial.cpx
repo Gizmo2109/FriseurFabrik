@@ -1,0 +1,9 @@
+export component Testimonial {
+  quote: slot
+  author: slot
+
+  render <figure class="testimonial">
+    <blockquote class="testimonial__quote">{quote}</blockquote>
+    <figcaption class="testimonial__author">{author}</figcaption>
+  </figure>
+}

@@ -1,0 +1,29 @@
+-
+  name: 'Appointment request form'
+  uriPattern: 'termin-anfrage'
+  defaults:
+    '@package': 'FriseurFabrik.Base'
+    '@controller': 'Appointment'
+    '@action': 'submit'
+    '@format': 'html'
+  httpMethods: ['POST']
+
+-
+  name: 'Appointment answer page (links in customer e-mails)'
+  uriPattern: 'termin/antwort'
+  defaults:
+    '@package': 'FriseurFabrik.Base'
+    '@controller': 'Appointment'
+    '@action': 'respond'
+    '@format': 'html'
+  httpMethods: ['GET']
+
+-
+  name: 'Appointment answer (accept / cancel)'
+  uriPattern: 'termin/antwort'
+  defaults:
+    '@package': 'FriseurFabrik.Base'
+    '@controller': 'Appointment'
+    '@action': 'answer'
+    '@format': 'html'
+  httpMethods: ['POST']

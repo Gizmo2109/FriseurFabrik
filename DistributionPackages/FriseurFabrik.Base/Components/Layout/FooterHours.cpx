@@ -1,0 +1,13 @@
+from "../Atom/HoursRow.cpx" import { HoursRow }
+
+export component FooterHours {
+  title: slot
+  rows: list<HoursRow>
+  note?: string
+
+  render <div class="footer-col">
+    <p class="site-footer__heading">{title}</p>
+    <dl class="hours hours--compact">{rows}</dl>
+    {note !== null ? <p class="site-footer__note">{note ?? ""}</p> : null}
+  </div>
+}

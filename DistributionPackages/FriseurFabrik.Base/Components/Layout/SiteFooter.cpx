@@ -1,0 +1,14 @@
+// Columns and legal links are content collections maintained by the editors
+export component SiteFooter {
+  columns: slot
+  legal: slot
+  copyright: slot
+
+  render <footer class="site-footer">
+    <div class="container">{columns}</div>
+    <div class="container site-footer__bottom">
+      <p class="site-footer__copyright">{copyright}</p>
+      {legal}
+    </div>
+  </footer>
+}

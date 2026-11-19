@@ -1,0 +1,67 @@
+# Friseur Haircut – Blasiusgasse. Alte Website zeigt nur "Dieser Account ist zur Zeit nicht erreichbar".
+# Daten aus Gelbe Seiten (Adresse, Telefon, Öffnungszeiten). Keine Preise/Team bekannt.
+rating:
+  score: 1
+  previousWebsite: 'https://www.haircut-wuerzburg.com'
+  reason: 'Website nicht erreichbar ("Dieser Account ist zur Zeit nicht erreichbar") – faktisch keine Website'
+nodeName: haircut
+# adds the unlinked page /bausteine with every element type (to show salons what is possible)
+showcase: true
+domains: ['haircut.localhost']
+site:
+  salonName: 'Friseur Haircut'
+  tagline: 'Ihr Friseur in der Altstadt'
+  street: 'Blasiusgasse 5'
+  postalCode: '97070'
+  city: 'Würzburg'
+  district: 'Altstadt'
+  phone: '0931 51079'
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Blasiusgasse+5%2C+97070+W%C3%BCrzburg'
+  hoursTuesday: '09:00 – 19:00'
+  hoursWednesday: '09:00 – 19:00'
+  hoursThursday: '09:00 – 19:00'
+  hoursFriday: '09:00 – 19:00'
+  hoursSaturday: '09:00 – 15:00'
+  theme: 'modern'
+  accentColor: '#2a7a76'
+  bookingButtonLabel: 'Termin anfragen'
+images:
+  hero: hairflip-city
+  about: cutting
+  prices: scissors-set
+  salon: interior-long
+  story: blowdry
+  gallery: [short-platinum, curly-glasses, comb-cut, ombre, color-brush, man-curly, bob, interior-plants]
+home:
+  kicker: 'Friseur in der Würzburger Altstadt'
+  headline: 'Ein guter Schnitt <em>verändert alles</em>'
+  text: 'Schnitt, Farbe und Styling für Damen und Herren – mitten in der Altstadt, Dienstag bis Freitag bis 19 Uhr.'
+  about:
+    kicker: 'Willkommen'
+    title: 'Ihr Look, unser Handwerk'
+    text: '<p>Bei Friseur Haircut in der Blasiusgasse dreht sich alles um Ihren Look. Wir beraten Sie ehrlich, schneiden präzise und finden gemeinsam mit Ihnen die Frisur, die zu Ihnen und Ihrem Alltag passt.</p>'
+  galleryTitle: 'Inspiration'
+  pricesTeaser: 'Unsere Leistungen im Überblick – Ihren Preis nennen wir Ihnen gerne persönlich.'
+features:
+  - { icon: scissors, title: 'Präzise Schnitte', text: 'Für Damen und Herren – klassisch oder modern.' }
+  - { icon: color, title: 'Farbe & Strähnen', text: 'Von natürlich bis ausdrucksstark.' }
+  - { icon: calendar, title: 'Bis 19 Uhr geöffnet', text: 'Dienstag bis Freitag – auch nach der Arbeit.' }
+prices:
+  headline: 'Leistungen'
+  intro: 'Ihren individuellen Preis nennen wir Ihnen gerne telefonisch unter 0931 51079 oder direkt im Salon.'
+  lists:
+    - title: 'Damen'
+      items:
+        - ['Waschen, Schneiden, Föhnen', 'auf Anfrage']
+        - ['Föhnen & Styling', 'auf Anfrage']
+        - ['Coloration', 'auf Anfrage']
+        - ['Strähnen', 'auf Anfrage']
+    - title: 'Herren'
+      items:
+        - ['Waschen, Schneiden, Styling', 'auf Anfrage']
+        - ['Maschinenschnitt', 'auf Anfrage']
+salonPage:
+  headline: 'Mitten in der Altstadt'
+  intro: 'Blasiusgasse 5, 97070 Würzburg.'
+  title: 'Schön, dass Sie da sind'
+  text: '<p>Kommen Sie vorbei oder fragen Sie Ihren Wunschtermin bequem online an – wir freuen uns auf Sie.</p>'

@@ -1,0 +1,18 @@
+from "./InstagramTile.cpx" import { InstagramTile }
+from "../Atom/Icon.cpx" import { Icon }
+from "../Data/IconName.cpx" import { IconName }
+
+export component Instagram {
+  title: slot
+  handle?: string
+  profileHref?: string
+  tiles: list<InstagramTile>
+
+  render <div class="insta">
+    <header class="insta__head">
+      <h2 class="section-head__title">{title}</h2>
+      {profileHref !== null ? <a class="btn btn--secondary" href={profileHref ?? ""} target="_blank" rel="noopener"><Icon name={IconName.INSTAGRAM}/>{handle ?? "Instagram"}</a> : null}
+    </header>
+    {tiles.count > 0 ? <div class="insta__grid">{tiles}</div> : <p class="empty-hint">Noch keine Instagram-Bilder ausgewählt.</p>}
+  </div>
+}
