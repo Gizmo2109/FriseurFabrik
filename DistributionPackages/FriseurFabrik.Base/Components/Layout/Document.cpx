@@ -3,9 +3,15 @@ export component Document {
   lang: string
   title: string
   description?: string
+  keywords?: string
   canonical?: string
-  ogImage?: string
   robots?: string
+  siteName: string
+  ogType: string
+  ogTitle: string
+  ogDescription?: string
+  ogImage?: string
+  googleVerification?: string
   theme: string
   editMode: boolean
   styleAttr?: string
@@ -24,12 +30,18 @@ export component Document {
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <title>{title}</title>
       {description !== null ? <meta name="description" content={description ?? ""}/> : null}
+      {keywords !== null ? <meta name="keywords" content={keywords ?? ""}/> : null}
       {robots !== null ? <meta name="robots" content={robots ?? ""}/> : null}
       {canonical !== null ? <link rel="canonical" href={canonical ?? ""}/> : null}
-      <meta property="og:type" content="website"/>
-      <meta property="og:title" content={title}/>
-      {description !== null ? <meta property="og:description" content={description ?? ""}/> : null}
+      {googleVerification !== null ? <meta name="google-site-verification" content={googleVerification ?? ""}/> : null}
+      <meta property="og:type" content={ogType}/>
+      <meta property="og:site_name" content={siteName}/>
+      <meta property="og:locale" content="de_DE"/>
+      <meta property="og:title" content={ogTitle}/>
+      {canonical !== null ? <meta property="og:url" content={canonical ?? ""}/> : null}
+      {ogDescription !== null ? <meta property="og:description" content={ogDescription ?? ""}/> : null}
       {ogImage !== null ? <meta property="og:image" content={ogImage ?? ""}/> : null}
+      {ogImage !== null ? <meta name="twitter:card" content="summary_large_image"/> : null}
       {favicon !== null ? <link rel="icon" href={favicon ?? ""}/> : null}
       <link rel="stylesheet" href={stylesheet}/>
       <script src={script} defer></script>

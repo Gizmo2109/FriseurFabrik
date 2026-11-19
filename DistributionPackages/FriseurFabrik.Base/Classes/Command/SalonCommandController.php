@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace FriseurFabrik\Base\Command;
 
 use FriseurFabrik\Base\Domain\Repository\AppointmentRequestRepository;
+use FriseurFabrik\Base\Media\SalonMedia;
 use FriseurFabrik\Base\Security\SalonAccess;
 use Neos\Neos\Domain\Service\UserService;
 use FriseurFabrik\Base\Seed\SalonSeeder;
@@ -28,6 +29,15 @@ class SalonCommandController extends CommandController
 {
     #[Flow\Inject]
     protected SalonSeeder $seeder;
+
+    #[Flow\Inject]
+    protected SalonMedia $salonMedia;
+
+    #[Flow\Inject]
+    protected SalonAccess $salonAccess;
+
+    #[Flow\Inject]
+    protected \Doctrine\ORM\EntityManagerInterface $entityManager;
 
     #[Flow\Inject]
     protected PackageManager $packageManager;
@@ -93,34 +103,99 @@ class SalonCommandController extends CommandController
     }
 
     /**
-     * Write Configuration/Policy.Salons.yaml: one role per salon that may edit only that salon's website
+     * Write Configuration/Policy.Salons.yaml: one role per salon that may edit only that salon's website and only
+     * sees that salon's media collection (website visitors see all media)
      *
-     * Run ./flow flow:cache:flush afterwards (seed does this file update automatically).
+     * Run ./flow flow:cache:flush afterwards (seed and media do this file update automatically).
      */
     public function policyCommand(): void
     {
+        $grant = static fn (string $target): array => ['privilegeTarget' => $target, 'permission' => 'GRANT'];
         $targets = [];
+        $assetTargets = [];
+        $collectionTargets = [];
         $roles = [];
+        // string keys: Flow merges Policy.yaml and this split file per list index, numeric keys would overwrite the static admin grants
         $adminPrivileges = [];
+        $visitorPrivileges = [];
+        // not findOneByNodeName(): Neos memoizes it per process, after salon:seed --force it still returns the pruned site
+        $collections = [];
+        foreach ($this->siteRepository->findAll() as $site) {
+            $collections[$site->getNodeName()->value] = $site->getAssetCollection();
+        }
         foreach ($this->salonFiles('all') as $file) {
             $data = Yaml::parseFile($file);
             $nodeName = (string)$data['nodeName'];
+            $salonName = (string)$data['site']['salonName'];
             $target = self::salonRole($nodeName);
-            $targets[$target] = ['label' => 'Website ' . $data['site']['salonName'] . ' bearbeiten', 'matcher' => SalonAccess::siteTag($nodeName)->value];
+            $targets[$target] = ['label' => 'Website ' . $salonName . ' bearbeiten', 'matcher' => SalonAccess::siteTag($nodeName)->value];
+            $privileges = [$grant($target)];
+            $adminPrivileges['salon_' . $nodeName] = $grant($target);
+
+            // the collection id (not its title) is matched, so renaming the collection in the media module is harmless
+            $collection = $collections[$nodeName] ?? null;
+            if ($collection !== null) {
+                $collectionId = (string)$this->persistenceManager->getIdentifierByObject($collection);
+                $assetsTarget = str_replace('Salon_', 'SalonMedia_', $target);
+                $collectionTarget = str_replace('Salon_', 'SalonMediaCollection_', $target);
+                $assetTargets[$assetsTarget] = ['label' => 'Medien von ' . $salonName . ' sehen', 'matcher' => sprintf('isInCollection("%s")', $collectionId)];
+                $collectionTargets[$collectionTarget] = ['label' => 'Medien-Sammlung von ' . $salonName . ' sehen', 'matcher' => sprintf('hasId("%s")', $collectionId)];
+                array_push($privileges, $grant($assetsTarget), $grant($collectionTarget));
+                $adminPrivileges['media_' . $nodeName] = $grant($assetsTarget);
+                $adminPrivileges['mediacollection_' . $nodeName] = $grant($collectionTarget);
+                // website visitors are not logged in; logged in salon accounts only see their own images
+                $visitorPrivileges['media_' . $nodeName] = $grant($assetsTarget);
+            } else {
+                $this->outputLine('<comment>%s: no media collection yet, run ./flow salon:media</comment>', [$nodeName]);
+            }
+
             $roles[$target] = [
-                'label' => 'Salon: ' . $data['site']['salonName'],
-                'description' => 'Darf die Website von ' . $data['site']['salonName'] . ' bearbeiten und deren Termine verwalten.',
+                'label' => 'Salon: ' . $salonName,
+                'description' => 'Darf die Website von ' . $salonName . ' bearbeiten, deren Medien sehen und deren Termine verwalten.',
                 'parentRoles' => ['FriseurFabrik.Base:SalonEditor'],
-                'privileges' => [['privilegeTarget' => $target, 'permission' => 'GRANT']],
+                'privileges' => $privileges,
             ];
-            // string keys: Flow merges Policy.yaml and this split file per list index, numeric keys would overwrite the static admin grants
-            $adminPrivileges['salon_' . $nodeName] = ['privilegeTarget' => $target, 'permission' => 'GRANT'];
         }
         $roles['Neos.Neos:Administrator'] = ['privileges' => $adminPrivileges];
-        $policy = ['privilegeTargets' => ['Neos\\Neos\\Security\\Authorization\\Privilege\\EditNodePrivilege' => $targets], 'roles' => $roles];
+        if ($visitorPrivileges !== []) {
+            $roles['Neos.Flow:Anonymous'] = ['privileges' => $visitorPrivileges];
+        }
+        $policy = ['privilegeTargets' => array_filter([
+            'Neos\\Neos\\Security\\Authorization\\Privilege\\EditNodePrivilege' => $targets,
+            'Neos\\Media\\Security\\Authorization\\Privilege\\ReadAssetPrivilege' => $assetTargets,
+            'Neos\\Media\\Security\\Authorization\\Privilege\\ReadAssetCollectionPrivilege' => $collectionTargets,
+        ]), 'roles' => $roles];
         $file = $this->packageManager->getPackage('FriseurFabrik.Base')->getConfigurationPath() . 'Policy.Salons.yaml';
         file_put_contents($file, "# GENERATED by ./flow salon:policy from Resources/Private/Salons/*.yaml – do not edit by hand\n" . str_replace('\\\\', '\\', Yaml::dump($policy, 6, 2)));
-        $this->outputLine('Wrote %s (%d salon roles)', [$file, count($targets)]);
+        $this->outputLine('Wrote %s (%d salon roles, %d media collections)', [$file, count($targets), count($assetTargets)]);
+    }
+
+    /**
+     * Give every salon website its own media collection
+     *
+     * Creates the collection of each salon site, puts the images it uses into it (images shared by several
+     * salons are copied, the pages then use the copy) and regenerates Policy.Salons.yaml. Safe to run again.
+     */
+    public function mediaCommand(): void
+    {
+        foreach ($this->salonFiles('all') as $file) {
+            $nodeName = (string)Yaml::parseFile($file)['nodeName'];
+            $site = $this->siteRepository->findOneByNodeName($nodeName);
+            if ($site === null) {
+                continue;
+            }
+            $stats = $this->salonMedia->separate($site);
+            $this->persistenceManager->persistAll();
+            $this->outputLine('%-14s übernommen: %d, kopiert: %d, übersprungen: %d', [$nodeName, $stats['adopted'], $stats['copied'], $stats['skipped']]);
+        }
+        // an asset in two salon collections matches both privileges and is hidden from both salons
+        $shared = (int)$this->entityManager->getConnection()->fetchOne('SELECT COUNT(*) FROM (SELECT media_asset FROM neos_media_domain_model_assetcollection_assets_join GROUP BY media_asset HAVING COUNT(*) > 1) shared');
+        if ($shared > 0) {
+            $this->outputLine('<error>%d Medien liegen in mehreren Sammlungen und sind deshalb für die betroffenen Salons unsichtbar – in der Medienverwaltung nur einer Sammlung zuordnen.</error>', [$shared]);
+        }
+        $this->policyCommand();
+        // the image properties changed in live
+        $this->salonAccess->rebaseEditorWorkspaces();
     }
 
     /**

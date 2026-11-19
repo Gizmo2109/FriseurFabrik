@@ -6,6 +6,7 @@ namespace FriseurFabrik\Base\Rendering;
 
 use FriseurFabrik\Base\Components\Layout\Document;
 use FriseurFabrik\Base\Components\Layout\MobileBar;
+use Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindChildNodesFilter;
 use Neos\ContentRepository\Core\Projection\ContentGraph\Node;
 use Neos\ContentRepository\Core\SharedModel\Node\NodeName;
 use Neos\Neos\Domain\NodeMapping\NodeMapperInterface;
@@ -55,9 +56,25 @@ class PageLayout
         $header = $this->sharedElement($context, 'header');
         $footer = $this->sharedElement($context, 'footer');
 
+        $isEdit = $context->renderingMode->isEdit;
+        $pageTitle = $isHome ? null : $this->title($document);
+        $title ??= $this->string($document, 'titleOverride') ?? Seo::title($data, $pageTitle);
+        $description = $this->string($document, 'metaDescription') ?? Seo::description($data, $pageTitle);
+        $canonical = $isEdit || $isCustomPage ? null : $this->canonical($context, $document);
+        $logo = $this->images->uri($data->logo, $request, 1200);
+        $ogImage = $this->shareImage($context, $document) ?? $this->shareImage($context, $site) ?? $logo;
+        $robots = implode(', ', array_filter([
+            $isCustomPage || $document->getProperty('metaRobotsNoindex') === true ? 'noindex' : null,
+            $document->getProperty('metaRobotsNofollow') === true ? 'nofollow' : null,
+        ]));
+        if (!$isEdit) {
+            // not in edit mode: the inline editors must keep the stored markup
+            $main = StringComponent::fromHtmlString(Seo::ensureH1($main->render()));
+        }
+
         $head = [];
         if ($isHome) {
-            $head[] = StringComponent::fromHtmlString($this->jsonLd($context, $data));
+            $head[] = StringComponent::fromHtmlString(Seo::jsonLd($data, $isEdit ? null : (string)$context->neos->getNodeUri($site, true), $ogImage, $logo));
         }
         if ($neosHead = $this->neosStuffFactory->tryGetHeadStuff($context)) {
             $head[] = $neosHead;
@@ -68,23 +85,25 @@ class PageLayout
             ctaLabel: $data->bookingLabel,
             ctaHref: $bookingHref,
         )];
-        if ($neosBody = $this->neosStuffFactory->tryGetBodyStuff($context->renderingMode->isEdit)) {
+        if ($neosBody = $this->neosStuffFactory->tryGetBodyStuff($isEdit)) {
             $bodyEnd[] = $neosBody;
         }
-
-        $title ??= $this->string($document, 'titleOverride') ?? ($isHome
-            ? $data->name . ($data->tagline ? ' – ' . $data->tagline : '')
-            : $this->title($document) . ' | ' . $data->name);
 
         return new HtmlDocument(Document::create(
             lang: 'de',
             title: $title,
-            description: $this->string($document, 'metaDescription') ?? $this->defaultDescription($data),
-            canonical: $context->renderingMode->isEdit || $isCustomPage ? null : (string)$context->neos->getNodeUri($document, true),
-            ogImage: $data->logo ? $this->images->uri($data->logo, $request, 1200) : null,
-            robots: $isCustomPage || $document->getProperty('metaRobotsNoindex') === true ? 'noindex' : null,
+            description: $description,
+            keywords: $this->string($document, 'metaKeywords'),
+            canonical: $canonical,
+            robots: $robots !== '' ? $robots : null,
+            siteName: $data->name,
+            ogType: $this->string($document, 'openGraphType') ?? 'website',
+            ogTitle: $this->string($document, 'openGraphTitle') ?? $title,
+            ogDescription: $this->string($document, 'openGraphDescription') ?? $description,
+            ogImage: $ogImage,
+            googleVerification: $isHome ? $this->string($site, 'metaGoogleSiteVerification') : null,
             theme: $data->theme,
-            editMode: $context->renderingMode->isEdit,
+            editMode: $isEdit,
             styleAttr: $data->accentColor ? '--accent: ' . $data->accentColor : null,
             stylesheet: $this->asset($context, 'Styles/main.css'),
             script: $this->asset($context, 'Scripts/main.js'),
@@ -123,49 +142,28 @@ class PageLayout
         );
     }
 
-    private function defaultDescription(SalonData $data): string
+    /** the SEO tab's canonical link (another page or URL) wins over the page's own URL */
+    private function canonical(NeosContext $context, Node $document): string
     {
-        $where = trim(($data->city ?? '') . ($data->district ? '-' . $data->district : ''));
-        return $data->name . ' – Ihr Friseur' . ($where !== '' ? ' in ' . $where : '')
-            . '. Preise, Team, Öffnungszeiten und Terminanfrage online.'
-            . ($data->phone ? ' Telefon ' . $data->phone . '.' : '');
+        $link = $this->string($document, 'canonicalLink');
+        $uri = $link !== null ? $context->neos->tryResolveLinkUri($link, $context->subgraph, true) : null;
+        return (string)($uri ?? $context->neos->getNodeUri($document, true));
     }
 
-    /** schema.org HairSalon data for search engines */
-    private function jsonLd(NeosContext $context, SalonData $data): string
+    /** image for link previews (WhatsApp, Facebook …): the SEO tab's image, else the photo of the page's first hero */
+    private function shareImage(NeosContext $context, Node $document): ?string
     {
-        $openingHours = [];
-        foreach ($data->hours as $day => $hours) {
-            if ($hours !== null && preg_match('/(\d{1,2})[:.](\d{2})\s*[-–—]\s*(\d{1,2})[:.](\d{2})/u', $hours, $m)) {
-                $openingHours[] = [
-                    '@type' => 'OpeningHoursSpecification',
-                    'dayOfWeek' => $day,
-                    'opens' => sprintf('%02d:%s', $m[1], $m[2]),
-                    'closes' => sprintf('%02d:%s', $m[3], $m[4]),
-                ];
-            }
+        $image = $this->images->uri($document->getProperty('openGraphImage'), $context->request, 1200);
+        if ($image !== null) {
+            return $image;
         }
-        $json = array_filter([
-            '@context' => 'https://schema.org',
-            '@type' => 'HairSalon',
-            'name' => $data->name,
-            'url' => $context->renderingMode->isEdit ? null : (string)$context->neos->getNodeUri($context->siteNode, true),
-            'telephone' => $data->phone,
-            'email' => $data->email,
-            'address' => array_filter([
-                '@type' => 'PostalAddress',
-                'streetAddress' => $data->street,
-                'postalCode' => $data->postalCode,
-                'addressLocality' => $data->city,
-                'addressCountry' => 'DE',
-            ]),
-            'openingHoursSpecification' => $openingHours ?: null,
-            'sameAs' => array_values(array_filter([$data->instagramUrl, $data->facebookUrl, $data->tiktokUrl])) ?: null,
-        ], static fn ($value) => $value !== null);
-
-        return '<script type="application/ld+json">'
-            . json_encode($json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_THROW_ON_ERROR)
-            . '</script>';
+        $main = $context->subgraph->findNodeByPath(NodeName::fromString('main'), $document->aggregateId);
+        $hero = $main ? $context->subgraph->findChildNodes(
+            $main->aggregateId,
+            FindChildNodesFilter::create(nodeTypes: 'FriseurFabrik.Base:Content.Hero', pagination: ['limit' => 1]),
+        )->first() : null;
+        // 1200 × 630 is the preview format of Facebook and WhatsApp
+        return $hero ? $this->images->uri($hero->getProperty('image'), $context->request, 1200, 630 / 1200) : null;
     }
 
     private function asset(NeosContext $context, string $path): string

@@ -9,6 +9,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Aop\JoinPointInterface;
 use Neos\Flow\Mvc\ActionRequest;
 use Neos\Flow\Security\Context as SecurityContext;
+use Neos\Neos\Domain\Model\SiteNodeName;
 use Neos\Neos\FrontendRouting\SiteDetection\SiteDetectionResult;
 use Neos\Utility\ObjectAccess;
 
@@ -24,6 +25,26 @@ class BackendSiteAccessAspect
 
     #[Flow\Inject]
     protected SecurityContext $securityContext;
+
+    /**
+     * The site list of the backend menu ("Inhalt") only shows the salon's own website(s).
+     * Neos 9.2 does not check permissions there yet (see TODO in MenuHelper::buildSiteList()).
+     *
+     * @return list<array<string,mixed>>
+     */
+    #[Flow\Around('method(Neos\Neos\Controller\Backend\MenuHelper->buildSiteList())')]
+    public function onlyOwnSitesInMenu(JoinPointInterface $joinPoint): array
+    {
+        $sites = $joinPoint->getAdviceChain()->proceed($joinPoint);
+        if ($this->securityContext->hasRole('Neos.Neos:Administrator')) {
+            return $sites;
+        }
+        $manageable = $this->salonSites->manageableSites();
+        return $manageable === [] ? $sites : array_values(array_filter(
+            $sites,
+            static fn (array $site) => $site['nodeName'] instanceof SiteNodeName && isset($manageable[$site['nodeName']->value]),
+        ));
+    }
 
     #[Flow\Around('method(Neos\Neos\Ui\Controller\BackendController->indexAction())')]
     public function restrictToOwnSites(JoinPointInterface $joinPoint): mixed

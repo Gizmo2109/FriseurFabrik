@@ -6,7 +6,7 @@
 # xdebug.path_mapping = 1
 #
 # ----------------------------------------------------------------
-# Last update: 2026-11-19 14:41:53
+# Last update: 2026-11-19 15:51:50
 remote_prefix:/app/Data/Temporary/Development/SubContextDocker/Cache/Code/Flow_Object_Classes/
 local_prefix:/app/
 Neos_Eel_CompilingEvaluator.php = Packages/Framework/Neos.Eel/Classes/CompilingEvaluator.php
@@ -645,6 +645,8 @@ FriseurFabrik_Base_Rendering_Images.php = DistributionPackages/FriseurFabrik.Bas
 FriseurFabrik_Base_Mail_AppointmentMails.php = DistributionPackages/FriseurFabrik.Base/Classes/Mail/AppointmentMails.php
 FriseurFabrik_Base_Seed_SalonSeeder.php = DistributionPackages/FriseurFabrik.Base/Classes/Seed/SalonSeeder.php
 FriseurFabrik_Base_Seed_SeedImages.php = DistributionPackages/FriseurFabrik.Base/Classes/Seed/SeedImages.php
+FriseurFabrik_Base_Media_SalonMedia.php = DistributionPackages/FriseurFabrik.Base/Classes/Media/SalonMedia.php
+FriseurFabrik_Base_Media_AssetCountAspect.php = DistributionPackages/FriseurFabrik.Base/Classes/Media/AssetCountAspect.php
 FriseurFabrik_Base_Controller_AppointmentController.php = DistributionPackages/FriseurFabrik.Base/Classes/Controller/AppointmentController.php
 FriseurFabrik_Base_Controller_Module_AppointmentsController.php = DistributionPackages/FriseurFabrik.Base/Classes/Controller/Module/AppointmentsController.php
 FriseurFabrik_Base_Controller_Module_PageLocksController.php = DistributionPackages/FriseurFabrik.Base/Classes/Controller/Module/PageLocksController.php

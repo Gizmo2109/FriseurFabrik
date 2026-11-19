@@ -31,126 +31,340 @@ privilegeTargets:
     'FriseurFabrik.Base:Salon_schraud':
       label: 'Website Andreas Schraud bearbeiten'
       matcher: salon-schraud
+  Neos\Media\Security\Authorization\Privilege\ReadAssetPrivilege:
+    'FriseurFabrik.Base:SalonMedia_axfriseure':
+      label: 'Medien von AX Friseure sehen'
+      matcher: 'isInCollection("fd2ed8c6-e0e7-418f-9567-2b5701c64711")'
+    'FriseurFabrik.Base:SalonMedia_billis':
+      label: 'Medien von Billi’s Friseure sehen'
+      matcher: 'isInCollection("22eaf484-3de0-4218-81c2-aabb2f81b001")'
+    'FriseurFabrik.Base:SalonMedia_dauer':
+      label: 'Medien von DAUER – Mode im Haar sehen'
+      matcher: 'isInCollection("ee6acf39-7a37-433e-836b-2dc8cf9d1870")'
+    'FriseurFabrik.Base:SalonMedia_haarliebe':
+      label: 'Medien von Haarliebe by Simone sehen'
+      matcher: 'isInCollection("5bde7dfb-1dcd-47c4-b265-4b4801d4e5fa")'
+    'FriseurFabrik.Base:SalonMedia_haarmonie':
+      label: 'Medien von Haarmonie sehen'
+      matcher: 'isInCollection("d2690ccf-1304-44b5-b4b9-96d98fc07348")'
+    'FriseurFabrik.Base:SalonMedia_haarwerk':
+      label: 'Medien von Haarwerk sehen'
+      matcher: 'isInCollection("eda91b0f-d583-4f9d-924d-439ba6cfa1ec")'
+    'FriseurFabrik.Base:SalonMedia_haircut':
+      label: 'Medien von Friseur Haircut sehen'
+      matcher: 'isInCollection("89830ec9-d7df-48f5-b31a-9d70abdb0a48")'
+    'FriseurFabrik.Base:SalonMedia_friseurleicht':
+      label: 'Medien von Friseur Leicht sehen'
+      matcher: 'isInCollection("9731633c-9ee6-43f2-9bc0-d4b926ce88fe")'
+    'FriseurFabrik.Base:SalonMedia_malek':
+      label: 'Medien von Friseursalon Malek sehen'
+      matcher: 'isInCollection("6a228d82-3463-4098-b3d5-3f907ae07c7a")'
+    'FriseurFabrik.Base:SalonMedia_schraud':
+      label: 'Medien von Andreas Schraud sehen'
+      matcher: 'isInCollection("e8002e70-97d1-49f8-9f11-5b4e720a73ba")'
+  Neos\Media\Security\Authorization\Privilege\ReadAssetCollectionPrivilege:
+    'FriseurFabrik.Base:SalonMediaCollection_axfriseure':
+      label: 'Medien-Sammlung von AX Friseure sehen'
+      matcher: 'hasId("fd2ed8c6-e0e7-418f-9567-2b5701c64711")'
+    'FriseurFabrik.Base:SalonMediaCollection_billis':
+      label: 'Medien-Sammlung von Billi’s Friseure sehen'
+      matcher: 'hasId("22eaf484-3de0-4218-81c2-aabb2f81b001")'
+    'FriseurFabrik.Base:SalonMediaCollection_dauer':
+      label: 'Medien-Sammlung von DAUER – Mode im Haar sehen'
+      matcher: 'hasId("ee6acf39-7a37-433e-836b-2dc8cf9d1870")'
+    'FriseurFabrik.Base:SalonMediaCollection_haarliebe':
+      label: 'Medien-Sammlung von Haarliebe by Simone sehen'
+      matcher: 'hasId("5bde7dfb-1dcd-47c4-b265-4b4801d4e5fa")'
+    'FriseurFabrik.Base:SalonMediaCollection_haarmonie':
+      label: 'Medien-Sammlung von Haarmonie sehen'
+      matcher: 'hasId("d2690ccf-1304-44b5-b4b9-96d98fc07348")'
+    'FriseurFabrik.Base:SalonMediaCollection_haarwerk':
+      label: 'Medien-Sammlung von Haarwerk sehen'
+      matcher: 'hasId("eda91b0f-d583-4f9d-924d-439ba6cfa1ec")'
+    'FriseurFabrik.Base:SalonMediaCollection_haircut':
+      label: 'Medien-Sammlung von Friseur Haircut sehen'
+      matcher: 'hasId("89830ec9-d7df-48f5-b31a-9d70abdb0a48")'
+    'FriseurFabrik.Base:SalonMediaCollection_friseurleicht':
+      label: 'Medien-Sammlung von Friseur Leicht sehen'
+      matcher: 'hasId("9731633c-9ee6-43f2-9bc0-d4b926ce88fe")'
+    'FriseurFabrik.Base:SalonMediaCollection_malek':
+      label: 'Medien-Sammlung von Friseursalon Malek sehen'
+      matcher: 'hasId("6a228d82-3463-4098-b3d5-3f907ae07c7a")'
+    'FriseurFabrik.Base:SalonMediaCollection_schraud':
+      label: 'Medien-Sammlung von Andreas Schraud sehen'
+      matcher: 'hasId("e8002e70-97d1-49f8-9f11-5b4e720a73ba")'
 roles:
   'FriseurFabrik.Base:Salon_axfriseure':
     label: 'Salon: AX Friseure'
-    description: 'Darf die Website von AX Friseure bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von AX Friseure bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_axfriseure'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_axfriseure'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_axfriseure'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_billis':
     label: 'Salon: Billi’s Friseure'
-    description: 'Darf die Website von Billi’s Friseure bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Billi’s Friseure bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_billis'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_billis'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_billis'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_dauer':
     label: 'Salon: DAUER – Mode im Haar'
-    description: 'Darf die Website von DAUER – Mode im Haar bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von DAUER – Mode im Haar bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_dauer'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_dauer'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_dauer'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_haarliebe':
     label: 'Salon: Haarliebe by Simone'
-    description: 'Darf die Website von Haarliebe by Simone bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Haarliebe by Simone bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_haarliebe'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarliebe'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haarliebe'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_haarmonie':
     label: 'Salon: Haarmonie'
-    description: 'Darf die Website von Haarmonie bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Haarmonie bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_haarmonie'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarmonie'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haarmonie'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_haarwerk':
     label: 'Salon: Haarwerk'
-    description: 'Darf die Website von Haarwerk bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Haarwerk bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_haarwerk'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarwerk'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haarwerk'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_haircut':
     label: 'Salon: Friseur Haircut'
-    description: 'Darf die Website von Friseur Haircut bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Friseur Haircut bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_haircut'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haircut'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haircut'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_friseurleicht':
     label: 'Salon: Friseur Leicht'
-    description: 'Darf die Website von Friseur Leicht bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Friseur Leicht bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_friseurleicht'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_friseurleicht'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_friseurleicht'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_malek':
     label: 'Salon: Friseursalon Malek'
-    description: 'Darf die Website von Friseursalon Malek bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Friseursalon Malek bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_malek'
         permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_malek'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_malek'
+        permission: GRANT
   'FriseurFabrik.Base:Salon_schraud':
     label: 'Salon: Andreas Schraud'
-    description: 'Darf die Website von Andreas Schraud bearbeiten und deren Termine verwalten.'
+    description: 'Darf die Website von Andreas Schraud bearbeiten, deren Medien sehen und deren Termine verwalten.'
     parentRoles:
       - 'FriseurFabrik.Base:SalonEditor'
     privileges:
       -
         privilegeTarget: 'FriseurFabrik.Base:Salon_schraud'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_schraud'
+        permission: GRANT
+      -
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_schraud'
         permission: GRANT
   'Neos.Neos:Administrator':
     privileges:
       salon_axfriseure:
         privilegeTarget: 'FriseurFabrik.Base:Salon_axfriseure'
         permission: GRANT
+      media_axfriseure:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_axfriseure'
+        permission: GRANT
+      mediacollection_axfriseure:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_axfriseure'
+        permission: GRANT
       salon_billis:
         privilegeTarget: 'FriseurFabrik.Base:Salon_billis'
+        permission: GRANT
+      media_billis:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_billis'
+        permission: GRANT
+      mediacollection_billis:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_billis'
         permission: GRANT
       salon_dauer:
         privilegeTarget: 'FriseurFabrik.Base:Salon_dauer'
         permission: GRANT
+      media_dauer:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_dauer'
+        permission: GRANT
+      mediacollection_dauer:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_dauer'
+        permission: GRANT
       salon_haarliebe:
         privilegeTarget: 'FriseurFabrik.Base:Salon_haarliebe'
+        permission: GRANT
+      media_haarliebe:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarliebe'
+        permission: GRANT
+      mediacollection_haarliebe:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haarliebe'
         permission: GRANT
       salon_haarmonie:
         privilegeTarget: 'FriseurFabrik.Base:Salon_haarmonie'
         permission: GRANT
+      media_haarmonie:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarmonie'
+        permission: GRANT
+      mediacollection_haarmonie:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haarmonie'
+        permission: GRANT
       salon_haarwerk:
         privilegeTarget: 'FriseurFabrik.Base:Salon_haarwerk'
+        permission: GRANT
+      media_haarwerk:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarwerk'
+        permission: GRANT
+      mediacollection_haarwerk:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haarwerk'
         permission: GRANT
       salon_haircut:
         privilegeTarget: 'FriseurFabrik.Base:Salon_haircut'
         permission: GRANT
+      media_haircut:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haircut'
+        permission: GRANT
+      mediacollection_haircut:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_haircut'
+        permission: GRANT
       salon_friseurleicht:
         privilegeTarget: 'FriseurFabrik.Base:Salon_friseurleicht'
+        permission: GRANT
+      media_friseurleicht:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_friseurleicht'
+        permission: GRANT
+      mediacollection_friseurleicht:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_friseurleicht'
         permission: GRANT
       salon_malek:
         privilegeTarget: 'FriseurFabrik.Base:Salon_malek'
         permission: GRANT
+      media_malek:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_malek'
+        permission: GRANT
+      mediacollection_malek:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_malek'
+        permission: GRANT
       salon_schraud:
         privilegeTarget: 'FriseurFabrik.Base:Salon_schraud'
+        permission: GRANT
+      media_schraud:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_schraud'
+        permission: GRANT
+      mediacollection_schraud:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMediaCollection_schraud'
+        permission: GRANT
+  'Neos.Flow:Anonymous':
+    privileges:
+      media_axfriseure:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_axfriseure'
+        permission: GRANT
+      media_billis:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_billis'
+        permission: GRANT
+      media_dauer:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_dauer'
+        permission: GRANT
+      media_haarliebe:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarliebe'
+        permission: GRANT
+      media_haarmonie:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarmonie'
+        permission: GRANT
+      media_haarwerk:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haarwerk'
+        permission: GRANT
+      media_haircut:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_haircut'
+        permission: GRANT
+      media_friseurleicht:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_friseurleicht'
+        permission: GRANT
+      media_malek:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_malek'
+        permission: GRANT
+      media_schraud:
+        privilegeTarget: 'FriseurFabrik.Base:SalonMedia_schraud'
         permission: GRANT

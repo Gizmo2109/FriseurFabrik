@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace FriseurFabrik\Base\Tests\Unit;
 
 use FriseurFabrik\Base\Rendering\SalonData;
+use FriseurFabrik\Base\Rendering\Seo;
 use FriseurFabrik\Base\Seed\SalonTemplate;
 use Neos\Flow\Tests\UnitTestCase;
 use PHPUnit\Framework\Attributes\Test;
@@ -74,5 +75,35 @@ class SalonDataAndTemplateTest extends UnitTestCase
                 self::assertFileExists(__DIR__ . '/../../Resources/Private/SeedImages/' . $image . '.jpg', basename($file));
             }
         }
+    }
+
+    #[Test]
+    public function seoDefaultsCarryTheCityAndDifferPerPage(): void
+    {
+        $salon = $this->salon(['salonName' => 'Haarwerk', 'tagline' => 'Wir machen Köpfe.', 'city' => 'Würzburg', 'district' => 'Altstadt']);
+        self::assertSame('Haarwerk – Wir machen Köpfe. | Friseur Würzburg', Seo::title($salon, null));
+        self::assertSame('Preise | Haarwerk | Friseur Würzburg', Seo::title($salon, 'Preise'));
+        self::assertSame('Friseur X – Ihr Friseur in Würzburg', Seo::title($this->salon(['salonName' => 'Friseur X', 'tagline' => 'Ihr Friseur in Würzburg', 'city' => 'Würzburg']), null));
+        self::assertNotSame(Seo::description($salon, null), Seo::description($salon, 'Preise'));
+        self::assertStringContainsString('in Würzburg-Altstadt', Seo::description($salon, null));
+        self::assertStringContainsString('in Sanderau', Seo::description($this->salon(['salonName' => 'X', 'district' => 'Sanderau']), null));
+    }
+
+    #[Test]
+    public function openingHoursSplitIntoRangesAndSkipFreeText(): void
+    {
+        $specs = Seo::openingHours(['Monday' => '9.00 - 12:30, 14:00 – 18:00', 'Tuesday' => 'nach Vereinbarung', 'Wednesday' => null]);
+        self::assertSame([['Monday', '09:00', '12:30'], ['Monday', '14:00', '18:00']], array_map(
+            static fn (array $spec) => [$spec['dayOfWeek'], $spec['opens'], $spec['closes']],
+            $specs,
+        ));
+    }
+
+    #[Test]
+    public function firstSectionHeadingBecomesH1OnlyWhenThereIsNone(): void
+    {
+        self::assertSame('<h1 class="t">A</h1><h2>B</h2>', Seo::ensureH1('<h2 class="t">A</h2><h2>B</h2>'));
+        self::assertSame('<h1>Hero</h1><h2>B</h2>', Seo::ensureH1('<h1>Hero</h1><h2>B</h2>'));
+        self::assertSame('<p>nur Text</p>', Seo::ensureH1('<p>nur Text</p>'));
     }
 }

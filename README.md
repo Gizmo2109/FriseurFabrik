@@ -39,7 +39,8 @@ sich auf **seiner** Domain an, z.B. http://haarwerk.localhost:8081/neos.
 **Inhalte:** Texte direkt auf der Seite anklicken und tippen. Neue Elemente über das „+“ im Inhaltsbaum
 (links). Fotos werden im Inspector (rechts) aus der Medienverwaltung gewählt oder hochgeladen – dafür gibt es
 Bild, Bildergalerie, Text mit Bild, **Vorher / Nachher** (Schieberegler), **Bilder-Slider** und **Bild-Kacheln**
-(Foto + Titel + Text + optionaler Link).
+(Foto + Titel + Text + optionaler Link). Jeder Salon hat in der Medienverwaltung eine **eigene Sammlung** und sieht
+nur seine eigenen Bilder; Uploads landen automatisch dort.
 
 **Instagram:** Element **„Instagram-Beiträge“** einfügen, darin je Beitrag den Link aus Instagram
 („Link kopieren“, `https://www.instagram.com/p/…`) eintragen, optional ein eigenes Vorschaubild. Besucher sehen
@@ -76,7 +77,7 @@ im Inspector-Tab **„Salon“**. Header, Footer, Kontakt- und Formular-Elemente
 | Konto | Darf |
 |---|---|
 | `admin` (Rolle `Neos.Neos:Administrator`) | alles: alle Websites, alle Termine (mit Salon-Filter), Benutzer, **Administration → Seitenschutz** |
-| Salon-Konto (Rolle `FriseurFabrik.Base:Salon_<name>`) | nur die eigene Website bearbeiten und nur deren Termine sehen; Backend anderer Domains zeigt „Kein Zugriff“ |
+| Salon-Konto (Rolle `FriseurFabrik.Base:Salon_<name>`) | nur die eigene Website bearbeiten, nur deren Termine und Medien sehen; im Backend-Menü „Inhalt“ steht nur die eigene Website, das Backend anderer Domains zeigt „Kein Zugriff“ |
 
 - Umgesetzt mit Subtree-Tags im Live-Workspace: jede Site trägt `salon-<name>`, die zugehörige
   `EditNodePrivilege` hat nur die Salon-Rolle (und Admins). Basisrolle aller Salon-Konten ist
@@ -84,6 +85,13 @@ im Inspector-Tab **„Salon“**. Header, Footer, Kontakt- und Formular-Elemente
 - **Gesperrte Seiten:** Impressum und Datenschutz sind für Salon-Konten gesperrt (Tag `fabrik-locked`). Unter
   Administration → Seitenschutz kann der Admin jede Seite (inkl. Unterseiten) sperren oder freigeben. Kopf- und
   Fußbereich hängen an der Site und bleiben auch auf gesperrten Seiten bearbeitbar.
+- **Medien:** Jede Site hat eine eigene Asset-Collection (Websites-Verwaltung → Site → Medien-Sammlung).
+  `ReadAssetPrivilege`/`ReadAssetCollectionPrivilege` pro Salon (Matcher auf die Collection-ID, Umbenennen ist
+  also unkritisch) – Salon-Konten sehen nur die eigene Sammlung, Website-Besucher (`Neos.Flow:Anonymous`) alle
+  Bilder. Uploads von Salon-Konten kommen immer in ihre Sammlung, auch wenn „Alle“ ausgewählt ist
+  (`Media/SalonMedia::assignUploadToSalon`). Ein Bild darf nur in **einer** Salon-Sammlung liegen – sonst ist es
+  für alle betroffenen Salons unsichtbar (`./flow salon:media` warnt davor).
+- Die Website-Liste im Backend-Menü filtert `BackendSiteAccessAspect` (Neos 9.2 prüft dort selbst keine Rechte).
 - `Configuration/Policy.Salons.yaml` wird von `./flow salon:policy` erzeugt – nicht von Hand ändern.
   Die Admin-Rechte darin haben String-Schlüssel, weil Flow `Policy.yaml` und `Policy.*.yaml` eines Pakets per
   Listenindex zusammenführt (numerische Schlüssel würden die Modul-Rechte aus `Policy.yaml` überschreiben).
@@ -106,7 +114,8 @@ Salons – mit einem echten Mailer würden Test-Anfragen dort ankommen.
 | `./flow salon:list` | Alle Salon-Datendateien mit lokaler Adresse und Bewertung der alten Website |
 | `./flow salon:seed` | Legt alle noch fehlenden Salon-Websites an (Seiten, Inhalte, Kopf-/Fußbereich, Bilder, Domain, Zugriffs-Tags) und schreibt `Policy.Salons.yaml` |
 | `./flow salon:seed --salon haarwerk --force` | Eine Website neu erzeugen – **im Backend gemachte Änderungen an dieser Website gehen verloren** (Termine bleiben) |
-| `./flow salon:policy` | `Policy.Salons.yaml` (eine Rolle pro Salon) neu erzeugen, danach `./flow flow:cache:flush` |
+| `./flow salon:policy` | `Policy.Salons.yaml` (eine Rolle pro Salon, Medien-Rechte) neu erzeugen, danach `./flow flow:cache:flush` |
+| `./flow salon:media` | Jeder Website eine eigene Medien-Sammlung geben: benutzte Bilder zuordnen, von mehreren Salons benutzte Bilder kopieren (die Seiten zeigen dann die Kopie), Policy neu schreiben. Mehrfach ausführbar |
 | `./flow salon:accounts [--salon haarwerk]` | Fehlende Salon-Konten anlegen; Passwörter werden **nur einmal** angezeigt |
 | `./flow user:setpassword <name> <passwort>` | Passwort eines Kontos ändern (Neos-Standard) |
 | `./flow salon:access <benutzername>` | Zeigt Rollen und für jede Website: bearbeitbar ja/nein, gesperrte Seiten |
@@ -136,6 +145,7 @@ DistributionPackages/FriseurFabrik.Base/
 │   │                     Module/AppointmentsController (Termine), Module/PageLocksController (Seitenschutz)
 │   ├── Domain/           AppointmentRequest (Status + Verlauf), Repository, AppointmentService, Validierung
 │   ├── Mail/             AppointmentMails (alle E-Mails), Ics (Kalenderdatei)
+│   ├── Media/            SalonMedia (Medien-Sammlung pro Salon), AssetCountAspect
 │   ├── Security/         SalonAccess (Tags setzen), BackendSiteAccessAspect, RateLimiter
 │   ├── Seed/             SalonTemplate (Standard-Seitenstruktur) + SalonSeeder (legt Sites über CR-Commands an)
 │   └── Instagram/        InstagramFeed (Instagram API, optional per Token)
@@ -161,8 +171,8 @@ nur relative Rücksprung-URLs. Ohne JavaScript funktioniert das Formular per nor
 
 ## Bekannte Grenzen
 
-- **Medienverwaltung** ist für alle Konten gemeinsam: Salon-Konten sehen auch die Bilder anderer Salons.
-  (Lösung bei Bedarf: eine Asset-Collection pro Site plus `ReadAssetCollectionPrivilege`.)
+- **Medien ohne Sammlung** (z.B. vom Admin unter „Alle“ hochgeladen) sehen alle Salons; **Tags** der
+  Medienverwaltung sind gemeinsam. Für Salon-Bilder deshalb immer die Sammlung des Salons wählen.
 - **Keine Doppelbuchungs-Prüfung:** beim Bestätigen wird nicht geprüft, ob die Zeit schon belegt ist – der
   Kalender-Reiter zeigt die Termine eines Tages untereinander.
 - Der **Veröffentlichen-Dialog** von Neos ist teilweise noch englisch („Yes, publish“) – Neos-Übersetzungen.
@@ -185,3 +195,19 @@ nur relative Rücksprung-URLs. Ohne JavaScript funktioniert das Formular per nor
   gesperrten Seite): Neos zeigt dem Konto einen Hinweis; notfalls den Workspace aus `./flow workspace:list`
   verwerfen (`./flow workspace:discard <workspace>` – **löscht dessen unveröffentlichte Änderungen**) und
   `./flow workspace:rebaseoutdated` ausführen.
+
+## SEO
+
+Läuft ohne Zutun auf jeder Website (Paket `neos/seo` + `Rendering/PageLayout.php`, Standardwerte in `Rendering/Seo.php`):
+
+- **Titel** `Seite | Salon | Friseur <Ort>` bzw. `Salon – Slogan | <Ort>`, **Beschreibung** je Seite verschieden,
+  Canonical, Open Graph (Vorschaubild = Bühnenbild der Seite, sonst der Startseite, sonst Logo), genau eine `<h1>`
+  pro Seite (ohne Bühne wird die erste Abschnitts-Überschrift zur `<h1>`).
+- Startseite: schema.org `HairSalon` (Adresse, Telefon, Öffnungszeiten, Karte, Social Media) + `WebSite`.
+- `/sitemap.xml` und `/robots.txt` pro Domain; Seiten mit „noindex“ fehlen in der Sitemap.
+- Im Inspector-Tab **SEO** überschreibt man pro Seite Titel, Beschreibung, noindex/nofollow, Canonical und
+  Vorschaubild/-text. Auf der Startseite steht dort auch der **Google-Search-Console-Code** (nur der Code aus
+  `content="…"`).
+
+Vor dem Livegang: Domain eintragen (Sitemap/Canonical nutzen die aufgerufene Domain), Sitemap in der Search
+Console einreichen, Google-Unternehmensprofil mit gleicher Adresse/Telefonnummer pflegen.

@@ -24,6 +24,8 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\ObjectManagement\ObjectManagerInterface;
 use Neos\Flow\Persistence\PersistenceManagerInterface;
 use Neos\Flow\Security\Context as SecurityContext;
+use Neos\Media\Domain\Model\AssetCollection;
+use FriseurFabrik\Base\Media\SalonMedia;
 use FriseurFabrik\Base\Security\SalonAccess;
 use Neos\Neos\Aspects\SiteRepositoryCachingAspect;
 use Neos\Neos\Domain\Model\Domain;
@@ -73,7 +75,13 @@ class SalonSeeder
     #[Flow\Inject]
     protected SalonAccess $salonAccess;
 
+    #[Flow\Inject]
+    protected SalonMedia $salonMedia;
+
     private ContentRepository $contentRepository;
+
+    /** media collection of the site being seeded, seed images are imported into it */
+    private AssetCollection $assetCollection;
 
     /** @var array<string,NodeAggregateId> page key => id */
     private array $pageIds = [];
@@ -92,6 +100,8 @@ class SalonSeeder
     {
         $nodeName = $data['nodeName'];
         $existing = $this->siteRepository->findOneByNodeName($nodeName);
+        // a recreated site keeps its media collection (pruneSite() leaves collections and assets alone)
+        $previousCollection = $existing?->getAssetCollection();
         if ($existing !== null) {
             if (!$force) {
                 throw new \RuntimeException(sprintf('Site "%s" exists already, use --force to recreate it.', $nodeName), 1794200010);
@@ -111,6 +121,8 @@ class SalonSeeder
         // the site entity name only allows plain punctuation (Label validator), the salon name property keeps typography
         $siteName = strtr($data['site']['salonName'], ['’' => "'", '–' => '-', '—' => '-']);
         $site = $this->siteService->createSite(self::PACKAGE, $siteName, self::SITE_TYPE, $nodeName);
+        $site->setAssetCollection($previousCollection);
+        $this->assetCollection = $this->salonMedia->collection($site);
         $this->persistenceManager->persistAll();
         $this->contentRepository = $this->contentRepositoryRegistry->get($site->getConfiguration()->contentRepositoryId);
         $this->pageIds = [];
@@ -245,7 +257,7 @@ class SalonSeeder
                 return $value;
             }
             if (str_starts_with($value, 'img:')) {
-                return $this->seedImages->get(substr($value, 4));
+                return $this->seedImages->get(substr($value, 4), $this->assetCollection);
             }
             if (str_starts_with($value, 'page:')) {
                 [$key, $fragment] = array_pad(explode('#', substr($value, 5), 2), 2, '');

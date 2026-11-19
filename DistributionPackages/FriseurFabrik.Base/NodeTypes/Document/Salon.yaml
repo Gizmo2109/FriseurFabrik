@@ -6,6 +6,8 @@
   superTypes:
     'Neos.Neos:Site': true
     'FriseurFabrik.Base:Document': true
+    # field for the Google Search Console verification code (SEO tab)
+    'Neos.Seo:GoogleSiteVerificationMixin': true
   ui:
     label: 'Salon-Startseite'
     icon: 'cut'
